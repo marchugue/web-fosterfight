@@ -67,6 +67,8 @@ var _col3_header: Label
 var _scroll_up_button: BaseButton
 var _scroll_down_button: BaseButton
 var _mode: SortMode = SortMode.TOP_PLAYER
+var _use_online: bool = true
+var _mode_toggle_button: Button
 
 var _sfx_hover: AudioStream
 var _sfx_select: AudioStream
@@ -136,7 +138,37 @@ func _ready() -> void:
 	if back_button != null:
 		back_button.pressed.connect(func(): if GameManager.instance != null: GameManager.instance.go_to_main_menu())
 
+	if LeaderboardManager.instance != null:
+		if not LeaderboardManager.instance.leaderboard_data_ready.is_connected(_on_leaderboard_data_ready):
+			LeaderboardManager.instance.leaderboard_data_ready.connect(_on_leaderboard_data_ready)
+
+	_setup_mode_toggle_button()
 	refresh()
+
+func _setup_mode_toggle_button() -> void:
+	_mode_toggle_button = get_node_or_null("%ModeToggleButton") as Button
+	if _mode_toggle_button == null:
+		_mode_toggle_button = Button.new()
+		_mode_toggle_button.name = "ModeToggleButton"
+		_mode_toggle_button.position = Vector2(1040, 35)
+		_mode_toggle_button.size = Vector2(200, 50)
+		_mode_toggle_button.add_theme_font_size_override("font_size", 12)
+		if entry_font != null:
+			_mode_toggle_button.add_theme_font_override("font", entry_font)
+		add_child(_mode_toggle_button)
+
+	_mode_toggle_button.pressed.connect(func():
+		_use_online = !_use_online
+		refresh()
+	)
+	_update_mode_button_text()
+
+func _update_mode_button_text(is_online_actual: bool = _use_online) -> void:
+	if _mode_toggle_button != null:
+		if _use_online:
+			_mode_toggle_button.text = "ONLINE [CLOUD]" if is_online_actual else "OFFLINE [LOCAL]"
+		else:
+			_mode_toggle_button.text = "OFFLINE [LOCAL]"
 
 func _sync_scroll_bar_properties() -> void:
 	var internal_vbar = _scroll_container.get_v_scroll_bar() if _scroll_container != null else null
@@ -182,6 +214,9 @@ func refresh() -> void:
 	for child in _player_container.get_children(): child.queue_free()
 	for child in _wins_container.get_children(): child.queue_free()
 
+	var loading_lbl = _create_label("Loading...", default_rank_color, HORIZONTAL_ALIGNMENT_CENTER)
+	_player_container.add_child(loading_lbl)
+
 	if _col3_header != null:
 		match _mode:
 			SortMode.TOP_PLAYER: _col3_header.text = "WINS"
@@ -189,16 +224,27 @@ func refresh() -> void:
 			SortMode.FASTEST_WIN: _col3_header.text = "FASTEST WIN"
 			_: _col3_header.text = "STAT"
 
-	var records: Array = []
+	var mode_str = "Wins"
+	match _mode:
+		SortMode.TOP_PLAYER: mode_str = "Wins"
+		SortMode.HIGHEST_COMBO: mode_str = "HighestCombo"
+		SortMode.FASTEST_WIN: mode_str = "FastestWinSeconds"
+
 	if LeaderboardManager.instance != null:
-		match _mode:
-			SortMode.TOP_PLAYER: records = LeaderboardManager.instance.get_top_players_by_wins(max_entries)
-			SortMode.HIGHEST_COMBO: records = LeaderboardManager.instance.get_top_players_by_combo(max_entries)
-			SortMode.FASTEST_WIN: records = LeaderboardManager.instance.get_top_players_by_fastest_win(max_entries)
-			_: records = LeaderboardManager.instance.get_top_players_by_wins(max_entries)
+		LeaderboardManager.instance.request_leaderboard(mode_str, max_entries, _use_online)
+	else:
+		_on_leaderboard_data_ready([], false)
+
+func _on_leaderboard_data_ready(records: Array, is_online: bool) -> void:
+	for child in _rank_container.get_children(): child.queue_free()
+	for child in _player_container.get_children(): child.queue_free()
+	for child in _wins_container.get_children(): child.queue_free()
+
+	_update_mode_button_text(is_online)
 
 	if records.is_empty():
-		var empty_label = _create_label("No matches recorded yet.", default_rank_color, HORIZONTAL_ALIGNMENT_CENTER)
+		var empty_text = "No online matches recorded yet." if is_online else "No local matches recorded yet."
+		var empty_label = _create_label(empty_text, default_rank_color, HORIZONTAL_ALIGNMENT_CENTER)
 		_player_container.add_child(empty_label)
 		_ensure_minimum_scrollable_height(1)
 		_sync_scroll_bar_properties.call_deferred()
@@ -215,7 +261,7 @@ func refresh() -> void:
 		var rank_lbl = _create_label("#%d" % rank, r_color, rank_alignment)
 		_rank_container.add_child(rank_lbl)
 
-		var player_name = record.player_name if record.has("player_name") else (record.get("PlayerName", "Player"))
+		var player_name = record.get("player_name", record.get("PlayerName", "Player"))
 		var name_lbl = _create_label(player_name, name_color, name_alignment)
 		name_lbl.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 		_player_container.add_child(name_lbl)

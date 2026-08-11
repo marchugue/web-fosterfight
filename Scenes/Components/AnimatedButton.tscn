@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bwkte5mmpja27"]
+
+[ext_resource type="Script" uid="uid://clph02v17l63h" path="res://Scripts/UI/AnimatedButtonComponent.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dbb5yb1hv747k" path="res://Assets/Sprites/UI/button_normal.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cym0b7s1ei5qf" path="res://Assets/Sprites/UI/button_hover.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://jg6ubu2vfuux" path="res://Assets/Sprites/UI/button_pressed.png" id="4"]
+[ext_resource type="AudioStream" uid="uid://cpn8sdjk21ig4" path="res://Assets/Audio/SFX/hover.mp3" id="5_depr3"]
+[ext_resource type="AudioStream" uid="uid://bve7o6dmh5v0s" path="res://Assets/Audio/SFX/ddlc-select-sfx.mp3" id="6_depr3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_normal"]
+texture = ExtResource("2")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pressed"]
+texture = ExtResource("4")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hover"]
+texture = ExtResource("3")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_focus"]
+
+[node name="AnimatedButton" type="Button" unique_id=1144753086]
+custom_minimum_size = Vector2(0, 48)
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_normal")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_pressed")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hover")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+script = ExtResource("1")
+sfx_hover = ExtResource("5_depr3")
+sfx_press = ExtResource("6_depr3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=514790803]

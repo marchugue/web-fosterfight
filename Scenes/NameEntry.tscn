@@ -1,0 +1,199 @@
+[gd_scene format=3 uid="uid://b8y2j5av88c1x"]
+
+[ext_resource type="Script" uid="uid://hu5gw8130e06" path="res://Scripts/UI/NameEntryUI.gd" id="1_name_entry"]
+[ext_resource type="PackedScene" uid="uid://bwkte5mmpja27" path="res://Scenes/Components/AnimatedButton.tscn" id="2_button"]
+[ext_resource type="Texture2D" uid="uid://dmg8peesw5lgb" path="res://Assets/Sprites/UI/characterSelect/image 221.png" id="3_bg1"]
+[ext_resource type="Texture2D" uid="uid://cfjlckokvi2em" path="res://Assets/Sprites/Backgrounds/Rectangle 60.png" id="4_bg2"]
+[ext_resource type="FontFile" uid="uid://dsaw4nnen6a2j" path="res://Assets/Fonts/Press_Start_2P/PressStart2P-Regular.ttf" id="5_font"]
+[ext_resource type="Texture2D" uid="uid://dt88g2ptakpoe" path="res://Assets/Sprites/UI/backbutton/Untitled/image 109.png" id="6_back1"]
+[ext_resource type="Texture2D" uid="uid://bkex7wpvfrhws" path="res://Assets/Sprites/UI/backbutton/Untitled/Property 1=image 111.png" id="7_back2"]
+[ext_resource type="Texture2D" uid="uid://bupvokp848715" path="res://Assets/Sprites/UI/backbutton/Untitled/Property 1=image 110.png" id="8_back3"]
+[ext_resource type="Texture2D" uid="uid://4nf0q548lf7k" path="res://Assets/Sprites/UI/battleHUD/battleOverlay/image 259.png" id="9_8m0e5"]
+[ext_resource type="Texture2D" uid="uid://okje0cq6j7lm" path="res://Assets/Sprites/UI/basta.png" id="10_sbied"]
+[ext_resource type="Texture2D" uid="uid://po0k3d527mv4" path="res://Assets/Sprites/UI/Property 1=image 108.png" id="11_xif6v"]
+[ext_resource type="Texture2D" uid="uid://bueb7wg82ic63" path="res://Assets/Sprites/UI/Property 1=image 110.png" id="12_6et3d"]
+[ext_resource type="Texture2D" uid="uid://no52m036q436" path="res://Assets/Sprites/UI/Property 1=image 109.png" id="13_i5710"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_back1"]
+texture = ExtResource("6_back1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_back2"]
+texture = ExtResource("7_back2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_back3"]
+texture = ExtResource("8_back3")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lineedit"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7sjja"]
+texture = ExtResource("11_xif6v")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pan37"]
+texture = ExtResource("12_6et3d")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hm20b"]
+texture = ExtResource("13_i5710")
+
+[node name="NameEntryUI" type="Control" unique_id=987654321]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_name_entry")
+p1_name_input_path = NodePath("MainPanel/TextureRect2/P1NameInput")
+p2_name_input_path = NodePath("MainPanel/TextureRect3/P2NameInput")
+confirm_button_path = NodePath("MainPanel/ConfirmButton")
+
+[node name="BgRect1" type="TextureRect" parent="." unique_id=987654322]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("3_bg1")
+expand_mode = 1
+
+[node name="BgRect2" type="TextureRect" parent="." unique_id=987654323]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("4_bg2")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="." unique_id=987654324]
+layout_mode = 0
+offset_top = 45.0
+offset_right = 1280.0
+offset_bottom = 95.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 20
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 28
+text = "Enter Fighter Names"
+horizontal_alignment = 1
+
+[node name="BackButton" parent="." unique_id=987654325 instance=ExtResource("2_button")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40.0
+offset_top = 30.0
+offset_right = 210.0
+offset_bottom = 85.0
+scale = Vector2(0.8, 0.8)
+theme_override_styles/normal = SubResource("StyleBoxTexture_back1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_back2")
+theme_override_styles/hover = SubResource("StyleBoxTexture_back3")
+
+[node name="MainPanel" type="Control" parent="." unique_id=1809566568]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -180.0
+offset_right = 320.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MainPanel" unique_id=1160651747]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 380.0
+texture = ExtResource("9_8m0e5")
+
+[node name="TextureRect2" type="TextureRect" parent="MainPanel" unique_id=1975993919]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 86.0
+offset_right = 841.50726
+offset_bottom = 169.0
+scale = Vector2(0.69, 0.69)
+texture = ExtResource("10_sbied")
+
+[node name="P1Label" type="Label" parent="MainPanel/TextureRect2" unique_id=987654330]
+layout_mode = 0
+offset_left = 75.36233
+offset_top = -33.33333
+offset_right = 715.3623
+offset_bottom = -7.2463837
+theme_override_colors/font_color = Color(0.68235296, 0.60784316, 0.50980395, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 12
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 16
+text = "PLAYER 1 NAME (WASD)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="P1NameInput" type="LineEdit" parent="MainPanel/TextureRect2" unique_id=987654331]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 0
+offset_left = 53.62318
+offset_top = 20.289856
+offset_right = 693.62317
+offset_bottom = 68.289856
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lineedit")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lineedit")
+placeholder_text = "Enter Player 1 Name..."
+max_length = 20
+
+[node name="TextureRect3" type="TextureRect" parent="MainPanel" unique_id=1949665605]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 184.0
+offset_right = 841.50726
+offset_bottom = 267.0
+scale = Vector2(0.69, 0.69)
+texture = ExtResource("10_sbied")
+
+[node name="P2Label" type="Label" parent="MainPanel/TextureRect3" unique_id=987654333]
+layout_mode = 0
+offset_left = 89.855064
+offset_top = -31.884071
+offset_right = 729.85504
+offset_bottom = -5.7970657
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 12
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 16
+text = "PLAYER 2 NAME (ARROWS)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="P2NameInput" type="LineEdit" parent="MainPanel/TextureRect3" unique_id=987654334]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 0
+offset_left = 55.072456
+offset_top = 17.391289
+offset_right = 695.07245
+offset_bottom = 65.39129
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lineedit")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lineedit")
+placeholder_text = "Enter Player 2 Name..."
+max_length = 20
+
+[node name="ConfirmButton" parent="MainPanel" unique_id=987654336 instance=ExtResource("2_button")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 0
+offset_left = 204.0
+offset_top = 271.0
+offset_right = 444.0
+offset_bottom = 328.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_7sjja")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_pan37")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hm20b")

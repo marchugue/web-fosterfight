@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b88as8xc4qyuo"]
+
+[ext_resource type="Script" uid="uid://c0ja74hn1oii1" path="res://Scripts/UI/TimerComponent.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://dsaw4nnen6a2j" path="res://Assets/Fonts/Press_Start_2P/PressStart2P-Regular.ttf" id="2_fnp5h"]
+
+[node name="TimerComponent" type="Control" unique_id=1476723557]
+custom_minimum_size = Vector2(80, 48)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1")
+
+[node name="TimeLabel" type="Label" parent="." unique_id=1041750116]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 48.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 9
+theme_override_fonts/font = ExtResource("2_fnp5h")
+theme_override_font_sizes/font_size = 32
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1

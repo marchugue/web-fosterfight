@@ -1,0 +1,186 @@
+[gd_scene format=3 uid="uid://kd03kt62elcq"]
+
+[ext_resource type="Script" uid="uid://cvl47iu021k5s" path="res://Scripts/UI/ResultUI.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://bwkte5mmpja27" path="res://Scenes/Components/AnimatedButton.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://4ke5s74dk3n0" path="res://Assets/Sprites/UI/result/gradient/image 247.png" id="2_krk85"]
+[ext_resource type="Texture2D" uid="uid://3ues161shl0m" path="res://Assets/Sprites/UI/result/gradient/Rectangle 61.png" id="3_mfskn"]
+[ext_resource type="Texture2D" uid="uid://bgk7k04imqirw" path="res://Assets/Sprites/UI/result/gradient/Rectangle 60.png" id="4_cgskb"]
+[ext_resource type="FontFile" uid="uid://dsaw4nnen6a2j" path="res://Assets/Fonts/Press_Start_2P/PressStart2P-Regular.ttf" id="5_ov3mn"]
+[ext_resource type="Texture2D" uid="uid://u2vnr3gfy7nv" path="res://Assets/Sprites/Characters/shadow.png" id="6_5bns1"]
+[ext_resource type="SpriteFrames" uid="uid://xjrcujngnpis" path="res://Assets/Animations/character1/v1.tres" id="7_lfa5s"]
+[ext_resource type="Texture2D" uid="uid://b2ic4olglnw1v" path="res://Assets/Sprites/UI/result/button/Property 1=image 248.png" id="9_uv8wn"]
+[ext_resource type="Texture2D" uid="uid://j28hlo0glrt6" path="res://Assets/Sprites/UI/result/button/Property 1=image 250.png" id="10_hover_250"]
+[ext_resource type="Texture2D" uid="uid://rguggm3vh6jx" path="res://Assets/Sprites/UI/result/button/Property 1=image 251.png" id="10_stka0"]
+[ext_resource type="Texture2D" uid="uid://3dt7tymrccl0" path="res://Assets/Sprites/UI/result/button/Property 1=image 254.png" id="11_cntak"]
+[ext_resource type="Texture2D" uid="uid://bcodhqjxwdmea" path="res://Assets/Sprites/UI/result/button/Property 1=image 256.png" id="12_d0xts"]
+[ext_resource type="Texture2D" uid="uid://7qs170cxloe1" path="res://Assets/Sprites/UI/result/button/Property 1=image 255.png" id="13_5laof"]
+[ext_resource type="Texture2D" uid="uid://dk0b2ckv5j5ip" path="res://Assets/Sprites/UI/result/button/Property 1=image 249.png" id="14_dby05"]
+[ext_resource type="Texture2D" uid="uid://cpk6t2x8bqd3y" path="res://Assets/Sprites/UI/result/button/Property 1=image 253.png" id="15_4wav4"]
+[ext_resource type="Texture2D" uid="uid://d3ceddsteb5i3" path="res://Assets/Sprites/UI/result/button/Property 1=image 252.png" id="16_eeuvd"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cv7u2"]
+texture = ExtResource("9_uv8wn")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_play_again_hover"]
+texture = ExtResource("10_hover_250")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ffr20"]
+texture = ExtResource("10_stka0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uv8wn"]
+texture = ExtResource("11_cntak")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_stka0"]
+texture = ExtResource("12_d0xts")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cntak"]
+texture = ExtResource("13_5laof")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d0xts"]
+texture = ExtResource("14_dby05")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5laof"]
+texture = ExtResource("15_4wav4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dby05"]
+texture = ExtResource("16_eeuvd")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_focus"]
+
+[node name="ResultUI" type="Control" unique_id=695235584]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2073919357]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_krk85")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1944101400]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_mfskn")
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=1085888082]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_cgskb")
+
+[node name="WinnerLabel" type="Label" parent="." unique_id=750054621]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 159.0
+offset_top = 92.0
+offset_right = 1439.0
+offset_bottom = 164.0
+theme_override_fonts/font = ExtResource("5_ov3mn")
+theme_override_font_sizes/font_size = 52
+text = "Winner!"
+horizontal_alignment = 1
+
+[node name="RoundsWonLabel" type="Label" parent="." unique_id=512598703]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 151.0
+offset_top = 176.0
+offset_right = 1431.0
+offset_bottom = 211.0
+theme_override_fonts/font = ExtResource("5_ov3mn")
+theme_override_font_sizes/font_size = 24
+text = "Rounds: 2 - 1"
+horizontal_alignment = 1
+
+[node name="ComboLabel" type="Label" parent="." unique_id=134577458]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 144.0
+offset_top = 237.0
+offset_right = 1424.0
+offset_bottom = 267.0
+theme_override_fonts/font = ExtResource("5_ov3mn")
+text = "Highest Combo: 0"
+horizontal_alignment = 1
+
+[node name="PreviewContainer" type="Control" parent="." unique_id=1384054511]
+anchors_preset = 0
+offset_left = 640.0
+offset_top = 310.0
+offset_right = 640.0
+offset_bottom = 310.0
+
+[node name="TextureButton" type="TextureRect" parent="PreviewContainer" unique_id=50625764]
+layout_mode = 0
+offset_left = -403.0
+offset_top = 67.0
+offset_right = -233.0
+offset_bottom = 100.0
+texture = ExtResource("6_5bns1")
+
+[node name="WinnerIdlePreview" type="AnimatedSprite2D" parent="PreviewContainer" unique_id=1456011809]
+unique_name_in_owner = true
+position = Vector2(-312.00003, -142.00002)
+scale = Vector2(3.5, 3.5)
+sprite_frames = ExtResource("7_lfa5s")
+animation = &"attack_1"
+
+[node name="ButtonRow" type="Control" parent="." unique_id=199021873]
+anchors_preset = 0
+offset_left = 630.0
+offset_top = 321.0
+offset_right = 930.0
+offset_bottom = 521.0
+
+[node name="PlayAgainButton" parent="ButtonRow" unique_id=33970996 instance=ExtResource("2")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 67.67
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_cv7u2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ffr20")
+theme_override_styles/hover = SubResource("StyleBoxTexture_play_again_hover")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+
+[node name="LeaderboardButton" parent="ButtonRow" unique_id=594947657 instance=ExtResource("2")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 0
+offset_top = 86.0
+offset_right = 300.0
+offset_bottom = 153.67
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_uv8wn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_stka0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_cntak")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+
+[node name="MainMenuButton" parent="ButtonRow" unique_id=2003140663 instance=ExtResource("2")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 0
+offset_top = 175.0
+offset_right = 300.0
+offset_bottom = 242.67
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_d0xts")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5laof")
+theme_override_styles/hover = SubResource("StyleBoxTexture_dby05")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")

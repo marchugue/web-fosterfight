@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bt7mtcs5a8xbi"]
+
+[ext_resource type="PackedScene" uid="uid://cvgid8s4x2bw7" path="res://Scenes/Components/Character.tscn" id="1_base"]
+[ext_resource type="Resource" uid="uid://msthuhy35slb" path="res://Resources/Characters/Character1.tres" id="2_data"]
+[ext_resource type="SpriteFrames" uid="uid://xjrcujngnpis" path="res://Assets/Animations/character1/v1.tres" id="3_ie6tg"]
+
+[node name="CharacterController2" unique_id=1066514675 instance=ExtResource("1_base")]
+data = ExtResource("2_data")
+
+[node name="Sprite" parent="." index="1" unique_id=1202145195]
+sprite_frames = ExtResource("3_ie6tg")
+animation = &"attack_2"
+frame = 4
+frame_progress = 1.0
+
+[node name="CollisionShape2D" parent="Hitbox" parent_id_path=PackedInt32Array(574974544) index="0" unique_id=1473128890]
+position = Vector2(1, -4)
+scale = Vector2(0.98, 1)

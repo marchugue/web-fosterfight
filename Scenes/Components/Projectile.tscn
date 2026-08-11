@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cok6y3c41r5v0"]
+
+[ext_resource type="Script" uid="uid://bkty2g2apflbf" path="res://Scripts/Character/Projectile.gd" id="1"]
+
+[sub_resource type="RectangleShape2D" id="HitShape"]
+size = Vector2(20, 16)
+
+[node name="Projectile" type="Area2D" unique_id=182243458]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=230876320]
+shape = SubResource("HitShape")
+
+[node name="Sprite" type="ColorRect" parent="." unique_id=159828805]
+offset_left = -10.0
+offset_top = -8.0
+offset_right = 10.0
+offset_bottom = 8.0
+color = Color(1, 0.85, 0.2, 1)
+
+[node name="HitboxAnimator" type="AnimationPlayer" parent="." unique_id=448976640]
+callback_mode_process = 2

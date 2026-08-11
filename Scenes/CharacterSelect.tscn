@@ -1,0 +1,358 @@
+[gd_scene format=3 uid="uid://2b7e84vjq4gf"]
+
+[ext_resource type="Script" uid="uid://cd8j04h1ggycw" path="res://Scripts/UI/CharacterSelectUI.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://bwkte5mmpja27" path="res://Scenes/Components/AnimatedButton.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://bg2dc4vj66j0y" path="res://Assets/Sprites/UI/characterSelect/indicators/Property 1=Group 9.png" id="2_a85h0"]
+[ext_resource type="AudioStream" uid="uid://dhh15w8cjxnut" path="res://Assets/Audio/SFX/select.mp3" id="3_1vrd3"]
+[ext_resource type="Texture2D" uid="uid://cr78myj06pdy" path="res://Assets/Sprites/UI/characterSelect/indicators/Property 1=image 99.png" id="3_20b7b"]
+[ext_resource type="Texture2D" uid="uid://dmg8peesw5lgb" path="res://Assets/Sprites/UI/characterSelect/image 221.png" id="3_adlwc"]
+[ext_resource type="Texture2D" uid="uid://dt88g2ptakpoe" path="res://Assets/Sprites/UI/backbutton/Untitled/image 109.png" id="3_j555r"]
+[ext_resource type="Texture2D" uid="uid://cfjlckokvi2em" path="res://Assets/Sprites/Backgrounds/Rectangle 60.png" id="4_2arlp"]
+[ext_resource type="Texture2D" uid="uid://dlil2ms8xhp1q" path="res://Assets/Sprites/UI/characterSelect/indicators/Property 1=image 100.png" id="4_chypt"]
+[ext_resource type="Texture2D" uid="uid://bkex7wpvfrhws" path="res://Assets/Sprites/UI/backbutton/Untitled/Property 1=image 111.png" id="4_jbnqh"]
+[ext_resource type="FontFile" uid="uid://dsaw4nnen6a2j" path="res://Assets/Fonts/Press_Start_2P/PressStart2P-Regular.ttf" id="5_1a83k"]
+[ext_resource type="Texture2D" uid="uid://bxdkmk4spsotq" path="res://Assets/Sprites/UI/characterSelect/indicators/Property 1=image 192.png" id="5_1vrd3"]
+[ext_resource type="Texture2D" uid="uid://bupvokp848715" path="res://Assets/Sprites/UI/backbutton/Untitled/Property 1=image 110.png" id="5_8cwx3"]
+[ext_resource type="Texture2D" uid="uid://dbb5yb1hv747k" path="res://Assets/Sprites/UI/button_normal.png" id="6_normal"]
+[ext_resource type="AudioStream" uid="uid://c1xodjk07lut8" path="res://Assets/Audio/SFX/appear-select.mp3" id="7_7f0fy"]
+[ext_resource type="AudioStream" uid="uid://cpn8sdjk21ig4" path="res://Assets/Audio/SFX/hover.mp3" id="7_l51cq"]
+[ext_resource type="Texture2D" uid="uid://ce6d3mx1e04of" path="res://Assets/Sprites/UI/battleHUD/indicator/Property 1=Variant2.png" id="10_1a83k"]
+[ext_resource type="SpriteFrames" uid="uid://xjrcujngnpis" path="res://Assets/Animations/character1/v1.tres" id="10_un5gs"]
+[ext_resource type="SpriteFrames" uid="uid://ed0eha42j44p" path="res://Assets/Animations/character4/v1.tres" id="11_w288a"]
+[ext_resource type="Texture2D" uid="uid://l4tii4wt5ahl" path="res://Assets/Sprites/UI/battleHUD/indicator/Property 1=Default.png" id="12_un5gs"]
+[ext_resource type="Texture2D" uid="uid://qsks6wdoix8t" path="res://Assets/Sprites/Characters/Vampire_Girl/image 234.png" id="15_20b7b"]
+[ext_resource type="Texture2D" uid="uid://dikvsek4noj0j" path="res://Assets/Sprites/Characters/Fighter/KO.png" id="16_chypt"]
+[ext_resource type="Texture2D" uid="uid://ctw3glwpo2k62" path="res://Assets/Sprites/Characters/Shinobi/e3ff585a-50d8-467b-88cf-bc578251ccf9 1.png" id="17_1vrd3"]
+[ext_resource type="Texture2D" uid="uid://c366nfpe6vowm" path="res://Assets/Sprites/Characters/Samurai/image 235.png" id="17_v5fbu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v5fbu"]
+texture = ExtResource("2_a85h0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qweq2"]
+texture = ExtResource("3_20b7b")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jnsl2"]
+texture = ExtResource("4_chypt")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l51cq"]
+texture = ExtResource("5_1vrd3")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7sjja"]
+texture = ExtResource("3_j555r")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pan37"]
+texture = ExtResource("4_jbnqh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hm20b"]
+texture = ExtResource("5_8cwx3")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_focus"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_slot_not_focused"]
+texture = ExtResource("6_normal")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="CharacterSelectUI" type="Control" unique_id=1519573811]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+style_box_not_focused = SubResource("StyleBoxTexture_v5fbu")
+style_box_p1_focus = SubResource("StyleBoxTexture_qweq2")
+style_box_p2_focus = SubResource("StyleBoxTexture_jnsl2")
+style_box_both_focus = SubResource("StyleBoxTexture_l51cq")
+sfx_navigate = ExtResource("3_1vrd3")
+sfx_confirm = ExtResource("7_7f0fy")
+sfx_hover = ExtResource("7_l51cq")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=964369221]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_adlwc")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1057229109]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_2arlp")
+
+[node name="Title" type="Label" parent="." unique_id=797904205]
+layout_mode = 0
+offset_top = 31.0
+offset_right = 1280.0
+offset_bottom = 81.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 24
+theme_override_fonts/font = ExtResource("5_1a83k")
+theme_override_font_sizes/font_size = 26
+text = "Choose your Character!!!"
+horizontal_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="." unique_id=1742532714]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 645.0
+offset_right = 1280.0
+offset_bottom = 685.0
+theme_override_font_sizes/font_size = 20
+text = "P1: WASD to Move | P2: Arrow Keys to Move"
+horizontal_alignment = 1
+
+[node name="BackButton" parent="." unique_id=946926231 instance=ExtResource("2")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40.0
+offset_top = 30.0
+offset_right = 210.0
+offset_bottom = 85.0
+scale = Vector2(0.8, 0.8)
+theme_override_styles/normal = SubResource("StyleBoxTexture_7sjja")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_pan37")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hm20b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+
+[node name="PlayerOnePanel" type="Control" parent="." unique_id=211259570]
+anchors_preset = 0
+offset_left = 184.0
+offset_top = 214.0
+offset_right = 526.0
+offset_bottom = 997.0
+
+[node name="TextureRect" type="TextureRect" parent="PlayerOnePanel" unique_id=1390805399]
+layout_mode = 0
+offset_left = 138.0
+offset_top = -153.0
+offset_right = 480.0
+offset_bottom = 204.0
+scale = Vector2(0.215, 0.215)
+texture = ExtResource("10_1a83k")
+
+[node name="PortraitOne" type="TextureRect" parent="PlayerOnePanel" unique_id=1975321531]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 0
+offset_top = 365.0
+offset_right = 342.0
+offset_bottom = 545.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameOne" type="Label" parent="PlayerOnePanel" unique_id=915069901]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -24.0
+offset_top = 182.0
+offset_right = 318.0
+offset_bottom = 204.0
+theme_override_fonts/font = ExtResource("5_1a83k")
+theme_override_font_sizes/font_size = 22
+text = "Character 1"
+horizontal_alignment = 1
+
+[node name="PreviewControlOne" type="Control" parent="PlayerOnePanel" unique_id=101010101]
+custom_minimum_size = Vector2(320, 200)
+anchors_preset = 0
+offset_top = 583.0
+offset_right = 342.0
+offset_bottom = 783.0
+
+[node name="IdlePreviewOne" type="AnimatedSprite2D" parent="PlayerOnePanel/PreviewControlOne" unique_id=101010102]
+unique_name_in_owner = true
+position = Vector2(174.99998, -606)
+scale = Vector2(3.0253904, 3.0253904)
+sprite_frames = ExtResource("10_un5gs")
+animation = &"idle"
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=2103488281]
+layout_mode = 0
+offset_left = 763.0
+offset_top = 444.00003
+offset_right = 962.0
+offset_bottom = 578.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("15_20b7b")
+stretch_mode = 3
+
+[node name="TextureRect4" type="TextureRect" parent="." unique_id=1046856142]
+layout_mode = 0
+offset_left = 373.0
+offset_top = 455.0
+offset_right = 572.0
+offset_bottom = 589.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("16_chypt")
+stretch_mode = 3
+
+[node name="TextureRect5" type="TextureRect" parent="." unique_id=1852065053]
+layout_mode = 0
+offset_left = 505.00003
+offset_top = 455.00003
+offset_right = 704.0
+offset_bottom = 589.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("17_v5fbu")
+stretch_mode = 3
+
+[node name="TextureRect6" type="TextureRect" parent="." unique_id=125535611]
+layout_mode = 0
+offset_left = 639.0
+offset_top = 455.00003
+offset_right = 838.0
+offset_bottom = 589.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("17_1vrd3")
+stretch_mode = 3
+
+[node name="RosterGrid" type="GridContainer" parent="." unique_id=202020200]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -264.7
+offset_top = 72.640015
+offset_right = 583.3015
+offset_bottom = 272.64014
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.62, 0.62)
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 4
+
+[node name="SlotContainer0" type="PanelContainer" parent="RosterGrid" unique_id=202020301]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(199.345, 200)
+layout_mode = 2
+
+[node name="Slot0" type="TextureRect" parent="RosterGrid/SlotContainer0" unique_id=202020201]
+unique_name_in_owner = true
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SlotContainer1" type="PanelContainer" parent="RosterGrid" unique_id=202020302]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_slot_not_focused")
+
+[node name="Slot1" type="TextureRect" parent="RosterGrid/SlotContainer1" unique_id=202020202]
+unique_name_in_owner = true
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SlotContainer2" type="PanelContainer" parent="RosterGrid" unique_id=202020303]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_slot_not_focused")
+
+[node name="Slot2" type="TextureRect" parent="RosterGrid/SlotContainer2" unique_id=202020203]
+unique_name_in_owner = true
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SlotContainer3" type="PanelContainer" parent="RosterGrid" unique_id=202020304]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_slot_not_focused")
+
+[node name="Slot3" type="TextureRect" parent="RosterGrid/SlotContainer3" unique_id=202020204]
+unique_name_in_owner = true
+z_index = -1
+custom_minimum_size = Vector2(-332.66, -125.5)
+layout_mode = 2
+texture = ExtResource("15_20b7b")
+stretch_mode = 3
+
+[node name="PlayerTwoPanel" type="Control" parent="." unique_id=1176475776]
+anchors_preset = 0
+offset_left = 900.0
+offset_top = 100.0
+offset_right = 1242.0
+offset_bottom = 892.0
+
+[node name="TextureRect" type="TextureRect" parent="PlayerTwoPanel" unique_id=1287779830]
+layout_mode = 0
+offset_left = -13.0
+offset_top = -40.0
+offset_right = 329.0
+offset_bottom = 317.0
+scale = Vector2(0.215, 0.215)
+texture = ExtResource("12_un5gs")
+
+[node name="PortraitTwo" type="TextureRect" parent="PlayerTwoPanel" unique_id=304814914]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 0
+offset_top = 365.0
+offset_right = 342.0
+offset_bottom = 545.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameTwo" type="Label" parent="PlayerTwoPanel" unique_id=1563285737]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -133.0
+offset_top = 294.0
+offset_right = 209.0
+offset_bottom = 325.0
+theme_override_fonts/font = ExtResource("5_1a83k")
+theme_override_font_sizes/font_size = 22
+text = "Character 2"
+horizontal_alignment = 1
+
+[node name="PreviewControlTwo" type="Control" parent="PlayerTwoPanel" unique_id=101010103]
+custom_minimum_size = Vector2(320, 200)
+anchors_preset = 0
+offset_top = 592.0
+offset_right = 342.0
+offset_bottom = 792.0
+
+[node name="IdlePreviewTwo" type="AnimatedSprite2D" parent="PlayerTwoPanel/PreviewControlTwo" unique_id=101010104]
+unique_name_in_owner = true
+position = Vector2(24, -499)
+scale = Vector2(3.025, 3.025)
+sprite_frames = ExtResource("11_w288a")
+animation = &"idle"
+flip_h = true
+
+[node name="P1SlotIndicator" type="TextureRect" parent="." unique_id=303030301]
+unique_name_in_owner = true
+z_index = 10
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+mouse_filter = 2
+texture = ExtResource("10_1a83k")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="P2SlotIndicator" type="TextureRect" parent="." unique_id=303030302]
+unique_name_in_owner = true
+z_index = 10
+layout_mode = 0
+offset_top = -7.0
+offset_right = 48.0
+offset_bottom = 41.0
+mouse_filter = 2
+texture = ExtResource("12_un5gs")
+expand_mode = 1
+stretch_mode = 5

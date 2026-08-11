@@ -1,0 +1,38 @@
+# Godot-specific
+.godot/
+.import/
+export_presets.cfg
+translation_vars.txt
+
+# Mono/C# specific
+.mono/
+data_*/
+mono_crash.*.json
+
+# C# build/IDE outputs
+[Bb]in/
+[Oo]bj/
+.vs/
+.idea/
+.vscode/
+*.csproj.old
+*.csproj.old.*
+*.sln.old
+*.user
+*.suo
+*.userprefs
+*.sln.docstates
+
+# Databases & runtime data
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs & temp files
+*.log
+*.tmp
+*~
+
+# OS/System files
+.DS_Store
+Thumbs.db

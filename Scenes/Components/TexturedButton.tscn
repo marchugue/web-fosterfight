@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Scripts/UI/TexturedButtonComponent.gd" id="1"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/UI/button_normal.png" id="2"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/UI/button_hover.png" id="3"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/UI/button_pressed.png" id="4"]
+
+[node name="TexturedButton" type="TextureButton"]
+custom_minimum_size = Vector2(64, 48)
+texture_normal = ExtResource("2")
+texture_pressed = ExtResource("4")
+texture_hover = ExtResource("3")
+stretch_mode = 0
+ignore_texture_size = true
+script = ExtResource("1")
+normal_texture = ExtResource("2")
+hover_texture = ExtResource("3")
+pressed_texture = ExtResource("4")

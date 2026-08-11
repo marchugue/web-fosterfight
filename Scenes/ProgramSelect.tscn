@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://rb8xsvtuvc63"]
+
+[ext_resource type="Script" uid="uid://bqyqhb534vqa0" path="res://Scripts/UI/ProgramSelectUI.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://bwkte5mmpja27" path="res://Scenes/Components/AnimatedButton.tscn" id="2"]
+[ext_resource type="FontFile" uid="uid://dsaw4nnen6a2j" path="res://Assets/Fonts/Press_Start_2P/PressStart2P-Regular.ttf" id="2_14gbr"]
+[ext_resource type="Texture2D" uid="uid://dlnstgl02y02n" path="res://Assets/Sprites/UI/Programselect/image 237.png" id="2_m4aw0"]
+[ext_resource type="Texture2D" uid="uid://lj60e57aa0y3" path="res://Assets/Sprites/UI/Programselect/playervsplayer/Property 1=image 80.png" id="3_f3itw"]
+[ext_resource type="Texture2D" uid="uid://cfjlckokvi2em" path="res://Assets/Sprites/Backgrounds/Rectangle 60.png" id="3_m4aw0"]
+[ext_resource type="Texture2D" uid="uid://bn0ulwvapt60f" path="res://Assets/Sprites/UI/Programselect/playervsplayer/Property 1=image 82.png" id="4_0axy3"]
+[ext_resource type="Texture2D" uid="uid://bf37dfbdgkrjg" path="res://Assets/Sprites/UI/Programselect/playervsplayer/Property 1=image 81.png" id="5_fbo53"]
+[ext_resource type="Texture2D" uid="uid://bydeoj8vn8b1r" path="res://Assets/Sprites/UI/Programselect/playervscpu/Property 1=image 83.png" id="6_rdkkj"]
+[ext_resource type="Texture2D" uid="uid://ctraipk8kivij" path="res://Assets/Sprites/UI/Programselect/playervscpu/Property 1=image 85.png" id="7_14gbr"]
+[ext_resource type="Texture2D" uid="uid://deo8d3m4xlb8q" path="res://Assets/Sprites/UI/Programselect/playervscpu/Property 1=image 84.png" id="8_s15f5"]
+[ext_resource type="Texture2D" uid="uid://dt88g2ptakpoe" path="res://Assets/Sprites/UI/backbutton/Untitled/image 109.png" id="12_m4aw0"]
+[ext_resource type="Texture2D" uid="uid://bkex7wpvfrhws" path="res://Assets/Sprites/UI/backbutton/Untitled/Property 1=image 111.png" id="13_7sjja"]
+[ext_resource type="Texture2D" uid="uid://bupvokp848715" path="res://Assets/Sprites/UI/backbutton/Untitled/Property 1=image 110.png" id="14_pan37"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ban5t"]
+texture = ExtResource("3_f3itw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s4t6r"]
+texture = ExtResource("4_0axy3")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_56f7c"]
+texture = ExtResource("5_fbo53")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b8jxp"]
+texture = ExtResource("6_rdkkj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_25f87"]
+texture = ExtResource("7_14gbr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_roh1d"]
+texture = ExtResource("8_s15f5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0j22h"]
+texture = ExtResource("7_14gbr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f3itw"]
+texture = ExtResource("12_m4aw0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7sjja"]
+texture = ExtResource("13_7sjja")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m4aw0"]
+texture = ExtResource("14_pan37")
+
+[node name="ProgramSelectUI" type="Control" unique_id=1439107560]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=59706179]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_m4aw0")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=934070177]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_m4aw0")
+
+[node name="Title" type="Label" parent="." unique_id=662206124]
+visible = false
+layout_mode = 0
+offset_top = 154.0
+offset_right = 1280.0
+offset_bottom = 214.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("2_14gbr")
+theme_override_font_sizes/font_size = 40
+text = "Choose your battle!!!"
+horizontal_alignment = 1
+
+[node name="ModeButtons" type="VBoxContainer" parent="." unique_id=120799951]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 309.0
+offset_right = 800.0
+offset_bottom = 489.0
+theme_override_constants/separation = 16
+
+[node name="VersusButton" parent="ModeButtons" unique_id=1854522698 instance=ExtResource("2")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_ban5t")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_s4t6r")
+theme_override_styles/hover = SubResource("StyleBoxTexture_56f7c")
+
+[node name="CpuButton" parent="ModeButtons" unique_id=482465404 instance=ExtResource("2")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_b8jxp")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_25f87")
+theme_override_styles/hover = SubResource("StyleBoxTexture_roh1d")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_0j22h")
+
+[node name="BackButton" parent="." unique_id=598423363 instance=ExtResource("2")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 210.0
+offset_bottom = 95.0
+scale = Vector2(0.8, 0.8)
+theme_override_styles/normal = SubResource("StyleBoxTexture_f3itw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7sjja")
+theme_override_styles/hover = SubResource("StyleBoxTexture_m4aw0")

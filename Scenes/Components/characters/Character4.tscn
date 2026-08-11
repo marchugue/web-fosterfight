@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c03hh21l8kp5n"]
+
+[ext_resource type="PackedScene" uid="uid://cvgid8s4x2bw7" path="res://Scenes/Components/Character.tscn" id="1_base"]
+[ext_resource type="Resource" uid="uid://0uwm6ha3n2ee" path="res://Resources/Characters/Character4.tres" id="2_data"]
+
+[node name="CharacterController" unique_id=1668473990 instance=ExtResource("1_base")]
+data = ExtResource("2_data")
+
+[node name="CollisionShape2D" parent="Hitbox" parent_id_path=PackedInt32Array(574974544) index="0" unique_id=1473128890]
+position = Vector2(0, -4)
+scale = Vector2(1.2, 1)

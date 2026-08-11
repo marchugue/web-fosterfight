@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://cja2s8lv1oars"]
+
+[ext_resource type="Resource" uid="uid://c8jl3wck3rcmb" path="res://Resources/Attacks/samurai/attack1.tres" id="1_gagun"]
+[ext_resource type="Resource" uid="uid://b0aqlq6ovb6cw" path="res://Resources/Attacks/samurai/attack2.tres" id="2_nkhcd"]
+[ext_resource type="Resource" uid="uid://ec27wtpf3gtm" path="res://Resources/Attacks/samurai/attack3.tres" id="3_apl5n"]
+[ext_resource type="Script" uid="uid://b1ue3r540cj4x" path="res://Scripts/Character/CharacterData.gd" id="4_apl5n"]
+[ext_resource type="SpriteFrames" uid="uid://btfk4utaeek7h" path="res://Assets/Animations/character2/v1.tres" id="4_gagun"]
+
+[resource]
+script = ExtResource("4_apl5n")
+display_name = "samurai"
+scene_path = "uid://bhei7bstktjts"
+attack1_data = ExtResource("1_gagun")
+attack2_data = ExtResource("2_nkhcd")
+attack3_data = ExtResource("3_apl5n")
+frames = ExtResource("4_gagun")

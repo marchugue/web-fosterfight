@@ -1,0 +1,359 @@
+[gd_scene format=3 uid="uid://b5wgjjxlho76q"]
+
+[ext_resource type="Script" uid="uid://dwygse1xwjf2" path="res://Scripts/UI/LeaderboardUI.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://bwkte5mmpja27" path="res://Scenes/Components/AnimatedButton.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://d0rkevesj26ky" path="res://Assets/Sprites/UI/leaderboard/image 246.png" id="2_c032w"]
+[ext_resource type="Texture2D" uid="uid://defya3ou2bqb0" path="res://Assets/Sprites/UI/leaderboard/image 244.png" id="2_ep5dy"]
+[ext_resource type="Texture2D" uid="uid://c7ksydmt5vokv" path="res://Assets/Sprites/UI/leaderboard/image 245.png" id="3_67g8g"]
+[ext_resource type="Texture2D" uid="uid://dt88g2ptakpoe" path="res://Assets/Sprites/UI/backbutton/Untitled/image 109.png" id="3_ldouh"]
+[ext_resource type="FontFile" uid="uid://7vr37ky46hbg" path="res://Assets/Fonts/alagard.ttf" id="4_7nue1"]
+[ext_resource type="Texture2D" uid="uid://bkex7wpvfrhws" path="res://Assets/Sprites/UI/backbutton/Untitled/Property 1=image 111.png" id="4_67k4m"]
+[ext_resource type="Texture2D" uid="uid://cvtc8etsxaw80" path="res://Assets/Sprites/UI/leaderboard/image 231.png" id="4_grabber"]
+[ext_resource type="Texture2D" uid="uid://bupvokp848715" path="res://Assets/Sprites/UI/backbutton/Untitled/Property 1=image 110.png" id="5_r3gmb"]
+[ext_resource type="Texture2D" uid="uid://jrdbeagmhs2c" path="res://Assets/Sprites/UI/leaderboard/image 242.png" id="6_67g8g"]
+[ext_resource type="FontFile" uid="uid://dsaw4nnen6a2j" path="res://Assets/Fonts/Press_Start_2P/PressStart2P-Regular.ttf" id="6_font"]
+[ext_resource type="Texture2D" uid="uid://bav1omeciir5s" path="res://Assets/Sprites/UI/leaderboard/Untitled/Property 1=image 211.png" id="11_7xbtn"]
+[ext_resource type="Texture2D" uid="uid://4g75cijvl5sp" path="res://Assets/Sprites/UI/leaderboard/Untitled/Property 1=image 213.png" id="12_i2qio"]
+[ext_resource type="Texture2D" uid="uid://igbvcnnawsey" path="res://Assets/Sprites/UI/leaderboard/Untitled/Property 1=image 214.png" id="13_ke0s6"]
+[ext_resource type="Texture2D" uid="uid://cx1h74sxrgqlv" path="res://Assets/Sprites/UI/leaderboard/Untitled/Property 1=image 216.png" id="14_y0c5p"]
+[ext_resource type="Texture2D" uid="uid://b47by7ac3rp3r" path="res://Assets/Sprites/UI/leaderboard/Untitled/Property 1=image 215.png" id="15_eb6ap"]
+[ext_resource type="Texture2D" uid="uid://c32pc8jflr43p" path="res://Assets/Sprites/UI/leaderboard/Untitled/Property 1=image 217.png" id="16_cg8xs"]
+[ext_resource type="Texture2D" uid="uid://ded6rorvuhyir" path="res://Assets/Sprites/UI/leaderboard/Untitled/Property 1=image 219.png" id="17_3olaf"]
+[ext_resource type="Texture2D" uid="uid://cyiji8aaw7neb" path="res://Assets/Sprites/UI/leaderboard/Untitled/Property 1=image 218.png" id="18_jycxj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a28sq"]
+texture = ExtResource("3_ldouh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ae8u8"]
+texture = ExtResource("4_67k4m")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vj30w"]
+texture = ExtResource("5_r3gmb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_em5qc"]
+texture = ExtResource("11_7xbtn")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x874j"]
+texture = ExtResource("12_i2qio")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rt7fa"]
+texture = ExtResource("12_i2qio")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bbtiu"]
+texture = ExtResource("13_ke0s6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ub5go"]
+texture = ExtResource("14_y0c5p")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_34efl"]
+texture = ExtResource("15_eb6ap")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ptw4v"]
+texture = ExtResource("16_cg8xs")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8c7ey"]
+texture = ExtResource("17_3olaf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hyd43"]
+texture = ExtResource("18_jycxj")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_clear"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_arrow_up"]
+texture = ExtResource("2_c032w")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_36sxb"]
+texture = ExtResource("4_grabber")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_67g8g"]
+texture = ExtResource("3_67g8g")
+
+[node name="LeaderboardUI" type="Control" unique_id=235584546]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+col3_header_path = NodePath("Col3Header")
+scrollbar_grabber_texture = ExtResource("4_grabber")
+scrollbar_track_texture = ExtResource("2_ep5dy")
+min_grabber_height = 15.0
+entry_font = ExtResource("4_7nue1")
+entry_font_size = 20
+stat_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=553775293]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_67g8g")
+
+[node name="Title" type="Label" parent="." unique_id=1251854485]
+layout_mode = 0
+offset_top = 35.0
+offset_right = 1280.0
+offset_bottom = 85.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 20
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 32
+text = "LEADERBOARD"
+horizontal_alignment = 1
+
+[node name="BackButton" parent="." unique_id=876754490 instance=ExtResource("2")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40.0
+offset_top = 35.0
+offset_right = 210.0
+offset_bottom = 90.0
+scale = Vector2(0.8, 0.8)
+theme_override_styles/normal = SubResource("StyleBoxTexture_a28sq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ae8u8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vj30w")
+
+[node name="Tabs" type="HBoxContainer" parent="." unique_id=1711114314]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -340.0
+offset_top = 105.0
+offset_right = 340.0
+offset_bottom = 150.0
+grow_horizontal = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="WinsTabButton" parent="Tabs" unique_id=1786869103 instance=ExtResource("2")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 42)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_em5qc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_x874j")
+theme_override_styles/hover = SubResource("StyleBoxTexture_rt7fa")
+
+[node name="ComboTabButton" parent="Tabs" unique_id=1254420474 instance=ExtResource("2")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 42)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_bbtiu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ub5go")
+theme_override_styles/hover = SubResource("StyleBoxTexture_34efl")
+
+[node name="FastestTabButton" parent="Tabs" unique_id=992565383 instance=ExtResource("2")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 42)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_ptw4v")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8c7ey")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hyd43")
+
+[node name="Col1Header" type="Label" parent="." unique_id=1611389504]
+custom_minimum_size = Vector2(2.475, 0)
+layout_mode = 0
+offset_left = 417.0
+offset_top = 259.0
+offset_right = 537.0
+offset_bottom = 273.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+theme_override_colors/font_color = Color(1, 0.84, 0, 1)
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 14
+text = "RANK"
+
+[node name="Col2Header" type="Label" parent="." unique_id=1611389505]
+layout_mode = 0
+offset_left = 514.0
+offset_top = 259.0
+offset_right = 855.0
+offset_bottom = 273.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_colors/font_color = Color(1, 0.84, 0, 1)
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 14
+text = "PLAYER NAME"
+
+[node name="Col3Header" type="Label" parent="." unique_id=1611389506]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 704.0
+offset_top = 259.0
+offset_right = 865.0
+offset_bottom = 273.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+theme_override_colors/font_color = Color(1, 0.84, 0, 1)
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 14
+text = "WINS"
+horizontal_alignment = 1
+
+[node name="TablePanel" type="PanelContainer" parent="." unique_id=1611389500]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -235.0
+offset_top = -82.99997
+offset_right = 225.0
+offset_bottom = 193.74414
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.86)
+pivot_offset = Vector2(202.5, 0)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_clear")
+
+[node name="TableVBox" type="VBoxContainer" parent="TablePanel" unique_id=1611389501]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="HeaderPanel" type="PanelContainer" parent="TablePanel/TableVBox" unique_id=1611389502]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_clear")
+
+[node name="MarginContainer" type="MarginContainer" parent="TablePanel/TableVBox" unique_id=1611389507]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 10
+
+[node name="TableBodyHBox" type="HBoxContainer" parent="TablePanel/TableVBox/MarginContainer" unique_id=1611389508]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TablePanel/TableVBox/MarginContainer/TableBodyHBox" unique_id=1611389537]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="EntriesHBox" type="HBoxContainer" parent="TablePanel/TableVBox/MarginContainer/TableBodyHBox/ScrollContainer" unique_id=1476338910]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="RankContainer" type="VBoxContainer" parent="TablePanel/TableVBox/MarginContainer/TableBodyHBox/ScrollContainer/EntriesHBox" unique_id=1476338911]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+theme_override_constants/separation = 6
+
+[node name="PlayerContainer" type="VBoxContainer" parent="TablePanel/TableVBox/MarginContainer/TableBodyHBox/ScrollContainer/EntriesHBox" unique_id=1476338912]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_constants/separation = 6
+
+[node name="WinsContainer" type="VBoxContainer" parent="TablePanel/TableVBox/MarginContainer/TableBodyHBox/ScrollContainer/EntriesHBox" unique_id=1476338913]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+theme_override_constants/separation = 6
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1407917347]
+layout_mode = 0
+offset_left = 867.0
+offset_top = 288.0
+offset_right = 882.0
+offset_bottom = 502.0
+texture = ExtResource("2_ep5dy")
+
+[node name="ScrollControlColumn" type="VBoxContainer" parent="." unique_id=1611389540]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 214.34497
+offset_top = -207.6
+offset_right = 254.34497
+offset_bottom = 381.28882
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.36, 0.36)
+pivot_offset = Vector2(20, 215)
+theme_override_constants/separation = 6
+
+[node name="ScrollUpButton" type="Button" parent="ScrollControlColumn" unique_id=1611389550]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_arrow_up")
+
+[node name="CustomVScrollBar" type="VScrollBar" parent="ScrollControlColumn" unique_id=1611389541]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/grabber = SubResource("StyleBoxTexture_36sxb")
+
+[node name="ScrollDownButton" type="Button" parent="ScrollControlColumn" unique_id=1611389551]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_67g8g")
+
+[node name="Label" type="Label" parent="." unique_id=506493299]
+visible = false
+layout_mode = 0
+offset_left = 407.0
+offset_top = 300.0
+offset_right = 467.0
+offset_bottom = 323.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("4_7nue1")
+theme_override_font_sizes/font_size = 20
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=1319288621]
+visible = false
+layout_mode = 0
+offset_left = 514.0
+offset_top = 300.0
+offset_right = 673.0
+offset_bottom = 323.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("4_7nue1")
+theme_override_font_sizes/font_size = 20
+text = "Marc Kian Hugue"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="." unique_id=2036158223]
+visible = false
+layout_mode = 0
+offset_left = 725.0
+offset_top = 292.0
+offset_right = 849.0
+offset_bottom = 315.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7nue1")
+theme_override_font_sizes/font_size = 20
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://bfl2hp6ca37wf"]
+
+[ext_resource type="Script" uid="uid://du8xhq8oe1mhv" path="res://Scripts/UI/HealthBarComponent.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bon65qdlxk1x" path="res://Assets/Sprites/UI/battleHUD/healthbar/5731d601-4360-4679-ad03-e0155609231c 1.png" id="2_qago0"]
+[ext_resource type="Texture2D" uid="uid://dgfbva7uu3rua" path="res://Assets/Sprites/UI/battleHUD/healthbar/Mask group.png" id="2_uuojc"]
+[ext_resource type="Texture2D" uid="uid://btoly7ytu8arj" path="res://Assets/Sprites/UI/battleHUD/healthbar/5731d601-4360-4679-ad03-e0155609231c 1-1.png" id="2_v3q4l"]
+[ext_resource type="Texture2D" uid="uid://t3xf6xjqnipp" path="res://Assets/Sprites/UI/battleHUD/indicator/image 40.png" id="3_7i7ey"]
+[ext_resource type="Texture2D" uid="uid://bfs0gatnwdfmd" path="res://Assets/Sprites/UI/battleHUD/healthbar/Property 1=Variant3.png" id="3_t3hwh"]
+[ext_resource type="FontFile" uid="uid://dsaw4nnen6a2j" path="res://Assets/Fonts/Press_Start_2P/PressStart2P-Regular.ttf" id="5_uuojc"]
+
+[node name="HealthBarComponent" type="Control" unique_id=296446794]
+custom_minimum_size = Vector2(360, 48)
+layout_mode = 3
+anchor_right = 0.72300005
+anchor_bottom = 0.115
+offset_right = -925.44006
+offset_bottom = -82.8
+script = ExtResource("1")
+bar_path = NodePath("Control/BarClip/Bar")
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="." unique_id=1122892452]
+layout_mode = 1
+anchor_right = 2.569
+anchor_bottom = 1.937
+offset_right = 0.15997314
+offset_bottom = 0.024002075
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(462.5, 46.5)
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=1431025835]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_uuojc")
+
+[node name="Border" type="TextureRect" parent="Control" unique_id=1451364806]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 924.0
+offset_bottom = 91.0
+texture = ExtResource("2_qago0")
+
+[node name="DelayClip" type="Control" parent="Control" unique_id=784752069]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 1
+anchors_preset = 0
+offset_left = -1.0
+offset_right = 924.0
+offset_bottom = 83.0
+
+[node name="DelayBar" type="TextureRect" parent="Control/DelayClip" unique_id=352240468]
+unique_name_in_owner = true
+layout_mode = 1
+offset_right = 924.0
+offset_bottom = 83.0
+texture = ExtResource("3_t3hwh")
+
+[node name="BarClip" type="Control" parent="Control" unique_id=2079411124]
+unique_name_in_owner = true
+clip_contents = true
+anchors_preset = 0
+offset_right = 925.0
+offset_bottom = 83.0
+
+[node name="Bar" type="TextureRect" parent="Control/BarClip" unique_id=2087762520]
+layout_mode = 0
+offset_right = 925.0
+offset_bottom = 83.0
+texture = ExtResource("2_v3q4l")
+
+[node name="NameLabel" type="Label" parent="." unique_id=1338371732]
+layout_mode = 0
+offset_left = 65.0
+offset_top = -10.0
+offset_right = 105.0
+offset_bottom = 21.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 9
+theme_override_fonts/font = ExtResource("5_uuojc")
+theme_override_font_sizes/font_size = 20
+text = "HP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Indicators" type="HBoxContainer" parent="." unique_id=987123456]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 571.0
+offset_top = 72.0
+offset_right = 667.0
+offset_bottom = 116.0
+theme_override_constants/separation = 8
+
+[node name="RoundIndicator1" type="TextureRect" parent="Indicators" unique_id=987123457]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+texture = ExtResource("3_7i7ey")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RoundIndicator2" type="TextureRect" parent="Indicators" unique_id=987123458]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+texture = ExtResource("3_7i7ey")
+expand_mode = 1
+stretch_mode = 5

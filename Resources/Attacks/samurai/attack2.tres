@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://b0aqlq6ovb6cw"]
+
+[ext_resource type="SpriteFrames" uid="uid://btfk4utaeek7h" path="res://Assets/Animations/character2/v1.tres" id="1_uv22e"]
+[ext_resource type="Script" uid="uid://1jn6asbjrouu" path="res://Scripts/Character/AttackData.gd" id="2_cibbc"]
+
+[resource]
+script = ExtResource("2_cibbc")
+sprite_animation_name = "attack_2"
+custom_sprite_frames = ExtResource("1_uv22e")

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://0uwm6ha3n2ee"]
+
+[ext_resource type="Resource" uid="uid://d4lqbifjc618w" path="res://Resources/Attacks/witch/attack_1.tres" id="1_mwnvh"]
+[ext_resource type="Script" uid="uid://b1ue3r540cj4x" path="res://Scripts/Character/CharacterData.gd" id="1_qiepk"]
+[ext_resource type="Resource" uid="uid://b1avtw67uosvx" path="res://Resources/Attacks/witch/attack_2.tres" id="2_uheam"]
+[ext_resource type="Resource" uid="uid://dur3a6xok1f5s" path="res://Resources/Attacks/witch/attack_3.tres" id="3_dpb22"]
+[ext_resource type="SpriteFrames" uid="uid://ed0eha42j44p" path="res://Assets/Animations/character4/v1.tres" id="4_frames"]
+
+[resource]
+script = ExtResource("1_qiepk")
+display_name = "witch"
+scene_path = "uid://c03hh21l8kp5n"
+attack1_data = ExtResource("1_mwnvh")
+attack2_data = ExtResource("2_uheam")
+attack3_data = ExtResource("3_dpb22")
+frames = ExtResource("4_frames")

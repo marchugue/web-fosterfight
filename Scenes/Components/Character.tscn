@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://cvgid8s4x2bw7"]
+
+[ext_resource type="Script" uid="uid://pwosotp36yvf" path="res://Scripts/Character/CharacterController.gd" id="1"]
+[ext_resource type="Script" uid="uid://bbu08peqn3h35" path="res://Scripts/Character/CharacterMovement.gd" id="2"]
+[ext_resource type="SpriteFrames" uid="uid://ed0eha42j44p" path="res://Assets/Animations/character4/v1.tres" id="2_id8sg"]
+[ext_resource type="Script" uid="uid://evl7ct4l75gn" path="res://Scripts/Character/CharacterCombat.gd" id="3"]
+[ext_resource type="Script" uid="uid://cpmiblagr6um4" path="res://Scripts/Character/CharacterAnimation.gd" id="4"]
+[ext_resource type="Script" uid="uid://5f5anh0pnj47" path="res://Scripts/Character/CharacterHealth.gd" id="5"]
+[ext_resource type="Script" uid="uid://btlfk0rpqr052" path="res://Scripts/Character/CharacterEnergy.gd" id="6"]
+[ext_resource type="Script" uid="uid://fflwn8vma8nb" path="res://Scripts/Character/CharacterCombo.gd" id="7"]
+[ext_resource type="Script" uid="uid://dr7vi8pcmgu1u" path="res://Scripts/Character/CommandComboSystem.gd" id="7b"]
+[ext_resource type="Script" uid="uid://ddi3ng13fc5du" path="res://Scripts/Character/DashTrail.gd" id="11"]
+[ext_resource type="Texture2D" uid="uid://ce6d3mx1e04of" path="res://Assets/Sprites/UI/battleHUD/indicator/Property 1=Variant2.png" id="12_indicator"]
+
+[sub_resource type="CapsuleShape2D" id="BodyShape"]
+radius = 4.0
+height = 18.0
+
+[sub_resource type="RectangleShape2D" id="HurtboxShape"]
+size = Vector2(10, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5as6f"]
+size = Vector2(10.75, 15)
+
+[sub_resource type="Animation" id="Animation_hkgom"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_mxibf"]
+resource_name = "attack_01"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dmkgu"]
+_data = {
+&"RESET": SubResource("Animation_hkgom"),
+&"attack_01": SubResource("Animation_mxibf")
+}
+
+
+[node name="CharacterController" type="CharacterBody2D" unique_id=18655221]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=271064383]
+position = Vector2(0, -9)
+shape = SubResource("BodyShape")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1202145195]
+position = Vector2(1.0000005, -21)
+scale = Vector2(0.32340494, 0.323405)
+sprite_frames = ExtResource("2_id8sg")
+animation = &"attack_1"
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1778851460]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=922628549]
+position = Vector2(0, -13)
+shape = SubResource("HurtboxShape")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=574974544]
+position = Vector2(5, -10)
+collision_layer = 0
+collision_mask = 4
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1473128890]
+position = Vector2(0.375, -4)
+shape = SubResource("RectangleShape2D_5as6f")
+
+[node name="CharacterMovement" type="Node" parent="." unique_id=1830537967]
+script = ExtResource("2")
+
+[node name="CharacterCombat" type="Node" parent="." unique_id=1418867369]
+script = ExtResource("3")
+
+[node name="HitboxAnimator" type="AnimationPlayer" parent="." unique_id=1276212637]
+callback_mode_process = 2
+libraries/ = SubResource("AnimationLibrary_dmkgu")
+
+[node name="CharacterAnimation" type="Node" parent="." unique_id=1925842438]
+script = ExtResource("4")
+sprite_path = NodePath("../Sprite")
+
+[node name="CharacterHealth" type="Node" parent="." unique_id=138364387]
+script = ExtResource("5")
+
+[node name="CharacterEnergy" type="Node" parent="." unique_id=1968965458]
+script = ExtResource("6")
+
+[node name="CharacterCombo" type="Node" parent="." unique_id=289566273]
+script = ExtResource("7")
+
+[node name="CommandComboSystem" type="Node" parent="." unique_id=1503849737]
+script = ExtResource("7b")
+
+[node name="DashTrail" type="Node" parent="." unique_id=257766369]
+script = ExtResource("11")
+
+[node name="PlayerIndicator" type="TextureRect" parent="." unique_id=1071946753]
+offset_left = -3.545
+offset_top = -34.105
+offset_right = 11.455
+offset_bottom = -19.105
+scale = Vector2(0.485, 0.485)
+texture = ExtResource("12_indicator")
+expand_mode = 1

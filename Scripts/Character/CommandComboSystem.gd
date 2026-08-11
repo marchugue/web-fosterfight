@@ -171,8 +171,14 @@ func _load_moves_from_folder(folder_path: String) -> void:
 	dir.list_dir_begin()
 	var entry = dir.get_next()
 	while not entry.is_empty():
-		if not dir.current_is_dir() and entry.ends_with(".tres"):
-			var res = load("%s/%s" % [folder_path, entry])
+		var clean_entry = entry
+		if clean_entry.ends_with(".remap"):
+			clean_entry = clean_entry.trim_suffix(".remap")
+		if clean_entry.ends_with(".import"):
+			entry = dir.get_next()
+			continue
+		if not dir.current_is_dir() and clean_entry.ends_with(".tres"):
+			var res = load("%s/%s" % [folder_path, clean_entry])
 			if res is ComboMoveData and not _moves.has(res):
 				_moves.append(res)
 			elif res is ComboMoveSet:

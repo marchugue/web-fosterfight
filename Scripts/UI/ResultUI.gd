@@ -32,7 +32,7 @@ func _ready() -> void:
 	elif GameManager.instance != null and GameManager.instance.selected_player_one_character != null:
 		winner_data = GameManager.instance.selected_player_one_character
 	else:
-		winner_data = load("res://Resources/Characters/character1.tres") as CharacterData
+		winner_data = load("res://Resources/Characters/Character1.tres") as CharacterData
 
 	if winner_data != null and winner_anim != null and winner_data.frames != null:
 		winner_anim.stop()

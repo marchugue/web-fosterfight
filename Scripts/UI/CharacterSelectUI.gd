@@ -255,26 +255,42 @@ func _wrap_index(index: int) -> int:
 
 func _load_roster() -> void:
 	_roster.clear()
-	var dir = DirAccess.open(CHARACTERS_FOLDER)
-	if dir == null:
-		push_warning("CharacterSelectUI: could not open %s" % CHARACTERS_FOLDER)
-		return
-
 	var file_list: Array[String] = []
-	dir.list_dir_begin()
-	var file_name = dir.get_next()
-	while not file_name.is_empty():
-		if file_name.ends_with(".tres"):
-			file_list.append(file_name)
-		file_name = dir.get_next()
-	dir.list_dir_end()
+	var dir = DirAccess.open(CHARACTERS_FOLDER)
+	if dir != null:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while not file_name.is_empty():
+			var clean_name = file_name
+			if clean_name.ends_with(".remap"):
+				clean_name = clean_name.trim_suffix(".remap")
+			if clean_name.ends_with(".import"):
+				file_name = dir.get_next()
+				continue
+			if clean_name.ends_with(".tres"):
+				if not file_list.has(clean_name):
+					file_list.append(clean_name)
+			file_name = dir.get_next()
+		dir.list_dir_end()
 
 	file_list.sort()
 
 	for fname in file_list:
 		var data = load("%s/%s" % [CHARACTERS_FOLDER, fname]) as CharacterData
-		if data != null:
+		if data != null and not _roster.has(data):
 			_roster.append(data)
+
+	if _roster.is_empty():
+		var default_paths = [
+			"res://Resources/Characters/Character1.tres",
+			"res://Resources/Characters/Character2.tres",
+			"res://Resources/Characters/Character3.tres",
+			"res://Resources/Characters/Character4.tres"
+		]
+		for path in default_paths:
+			var data = load(path) as CharacterData
+			if data != null and not _roster.has(data):
+				_roster.append(data)
 
 func _refresh_panels() -> void:
 	if _roster.is_empty(): return

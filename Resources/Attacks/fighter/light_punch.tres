@@ -5,5 +5,7 @@
 
 [resource]
 script = ExtResource("2_e720v")
+character_id = "c1"
 sprite_animation_name = "attack_1"
 custom_sprite_frames = ExtResource("1_qe33e")
+attack_speed = 2.0

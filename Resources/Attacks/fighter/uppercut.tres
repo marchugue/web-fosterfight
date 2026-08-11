@@ -5,5 +5,14 @@
 
 [resource]
 script = ExtResource("3_gos3k")
+character_id = "c1"
+type = 2
 sprite_animation_name = "uppercut"
 custom_sprite_frames = ExtResource("1_jmq30")
+attack_speed = 0.75
+hitbox_start_frame = 3
+hitbox_duration = 1
+damage = 100.0
+hitstun = 1.0
+effect = 1
+cooldown = 3.0

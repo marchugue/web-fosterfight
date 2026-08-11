@@ -9,6 +9,7 @@
 [resource]
 script = ExtResource("1_qiepk")
 display_name = "fighter"
+id = "c1"
 scene_path = "uid://bt7mtcs5a8xbi"
 attack1_data = ExtResource("1_pt1rh")
 attack2_data = ExtResource("2_xuq11")

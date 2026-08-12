@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://boivgcuuqsc1i"
+path="res://.godot/imported/k.o gurl.mp3-1957c115c227ead8fac571208be56667.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/character4/k.o gurl.mp3"
+dest_files=["res://.godot/imported/k.o gurl.mp3-1957c115c227ead8fac571208be56667.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

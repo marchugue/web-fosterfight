@@ -1,18 +1,24 @@
 [gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://ck7oa0jppwt0x"]
 
 [ext_resource type="SpriteFrames" uid="uid://ed0eha42j44p" path="res://Assets/Animations/character4/v1.tres" id="1_jmq30"]
+[ext_resource type="AudioStream" uid="uid://pji3h1pqy2si" path="res://Assets/Audio/SFX/character1punch/Rising_energetic_win_#1-1786459359657.mp3" id="3_8knmv"]
 [ext_resource type="Script" uid="uid://1jn6asbjrouu" path="res://Scripts/Character/AttackData.gd" id="3_gos3k"]
 
 [resource]
 script = ExtResource("3_gos3k")
 character_id = "c1"
-type = 2
+type = 4
 sprite_animation_name = "uppercut"
 custom_sprite_frames = ExtResource("1_jmq30")
 attack_speed = 0.75
 hitbox_start_frame = 3
 hitbox_duration = 1
-damage = 100.0
-hitstun = 1.0
-effect = 1
-cooldown = 3.0
+sfx_on_start = ExtResource("3_8knmv")
+damage = 110.0
+knockback = 320.0
+hitstun = 0.55
+launch_force = Vector2(250, -150)
+effect = 4
+cooldown = 0.7
+energy_cost = 25.0
+energy_gained_on_hit = 0.0

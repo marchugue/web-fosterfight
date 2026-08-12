@@ -1,9 +1,22 @@
 [gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://x8nhw7j15yf3"]
 
 [ext_resource type="SpriteFrames" uid="uid://xjrcujngnpis" path="res://Assets/Animations/character1/v1.tres" id="1_cu6ey"]
+[ext_resource type="AudioStream" uid="uid://ch2fw4n440o4t" path="res://Assets/Audio/SFX/character1punch/Heavy_sub-bass_punch_#2-1786459310020.mp3" id="3_cu6ey"]
 [ext_resource type="Script" uid="uid://1jn6asbjrouu" path="res://Scripts/Character/AttackData.gd" id="3_qv5e2"]
 
 [resource]
 script = ExtResource("3_qv5e2")
-sprite_animation_name = "attack_1"
+type = 2
+sprite_animation_name = "attack_3"
 custom_sprite_frames = ExtResource("1_cu6ey")
+hitbox_start_frame = 3
+hitbox_duration = 1
+sfx_on_start = ExtResource("3_cu6ey")
+damage = 55.0
+knockback = 140.0
+hitstun = 0.4
+launch_force = Vector2(100, -420)
+effect = 1
+cooldown = 0.4
+can_cancel_after_hit = true
+allowed_cancel_targets = Array[int]([2])

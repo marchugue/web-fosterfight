@@ -22,6 +22,7 @@ var _next_sfx_player: int = 0
 var _bgm_tween: Tween
 
 func _ready() -> void:
+	process_mode = PROCESS_MODE_ALWAYS
 	instance = self
 
 	_music_player = AudioStreamPlayer.new()
@@ -118,17 +119,27 @@ func play_menu_music() -> void:
 			play_music(select_screen_bgm)
 
 func play_sfx(clip: AudioStream) -> void:
+	if clip == null:
+		return
 	var player = _sfx_pool[_next_sfx_player]
 	_next_sfx_player = (_next_sfx_player + 1) % _sfx_pool.size()
 	player.stream = clip
 	player.pitch_scale = 1.0
+	var master = GameManager.instance.settings.master_volume if GameManager.instance != null and GameManager.instance.settings != null else 1.0
+	var sfx = GameManager.instance.settings.sfx_volume if GameManager.instance != null and GameManager.instance.settings != null else 1.0
+	player.volume_db = _linear_to_db(master * sfx)
 	player.play()
 
 func play_sfx_pitched(clip: AudioStream, pitch_scale: float) -> void:
+	if clip == null:
+		return
 	var player = _sfx_pool[_next_sfx_player]
 	_next_sfx_player = (_next_sfx_player + 1) % _sfx_pool.size()
 	player.stream = clip
 	player.pitch_scale = maxf(0.01, pitch_scale)
+	var master = GameManager.instance.settings.master_volume if GameManager.instance != null and GameManager.instance.settings != null else 1.0
+	var sfx = GameManager.instance.settings.sfx_volume if GameManager.instance != null and GameManager.instance.settings != null else 1.0
+	player.volume_db = _linear_to_db(master * sfx)
 	player.play()
 
 func _get_target_music_db() -> float:

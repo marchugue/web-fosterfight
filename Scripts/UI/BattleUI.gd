@@ -18,6 +18,13 @@ extends Control
 @export var resume_button_path: NodePath = "%ResumeButton"
 @export var quit_button_path: NodePath = "%QuitButton"
 
+@export var master_volume_slider_path: NodePath = "%MasterVolumeSlider"
+@export var music_volume_slider_path: NodePath = "%MusicVolumeSlider"
+@export var sfx_volume_slider_path: NodePath = "%SFXVolumeSlider"
+@export var master_volume_label_path: NodePath = "%MasterVolumeLabel"
+@export var music_volume_label_path: NodePath = "%MusicVolumeLabel"
+@export var sfx_volume_label_path: NodePath = "%SFXVolumeLabel"
+
 var _p1_health: HealthBarComponent
 var _p2_health: HealthBarComponent
 var _p1_energy: TextureProgressBar
@@ -30,6 +37,13 @@ var _hud_root: Control
 var _pause_panel: Control
 var _resume_button: BaseButton
 var _quit_button: BaseButton
+
+var _master_slider: HSlider
+var _music_slider: HSlider
+var _sfx_slider: HSlider
+var _master_label: Label
+var _music_label: Label
+var _sfx_label: Label
 
 func _ready() -> void:
 	process_mode = PROCESS_MODE_ALWAYS
@@ -73,6 +87,15 @@ func _ready() -> void:
 	if _resume_button != null: _resume_button.pressed.connect(resume_game)
 	if _quit_button != null: _quit_button.pressed.connect(quit_game)
 	if _pause_panel != null: _pause_panel.visible = false
+
+	_master_slider = get_node_or_null(master_volume_slider_path) as HSlider
+	_music_slider = get_node_or_null(music_volume_slider_path) as HSlider
+	_sfx_slider = get_node_or_null(sfx_volume_slider_path) as HSlider
+	_master_label = get_node_or_null(master_volume_label_path) as Label
+	_music_label = get_node_or_null(music_volume_label_path) as Label
+	_sfx_label = get_node_or_null(sfx_volume_label_path) as Label
+
+	_setup_audio_sliders()
 
 func update_fighter_references(player_one: CharacterController, player_two: CharacterController) -> void:
 	_setup_fighters(player_one, player_two)
@@ -126,6 +149,7 @@ func toggle_pause() -> void:
 
 func pause_game() -> void:
 	get_tree().paused = true
+	_sync_audio_sliders()
 	if _pause_panel != null:
 		_pause_panel.visible = true
 	if _resume_button != null:
@@ -140,6 +164,78 @@ func quit_game() -> void:
 	get_tree().paused = false
 	if GameManager.instance != null:
 		GameManager.instance.go_to_main_menu()
+
+func _setup_audio_sliders() -> void:
+	if _master_slider != null:
+		_master_slider.min_value = 0.0
+		_master_slider.max_value = 1.0
+		_master_slider.step = 0.05
+		_master_slider.value_changed.connect(_on_master_volume_changed)
+
+	if _music_slider != null:
+		_music_slider.min_value = 0.0
+		_music_slider.max_value = 1.0
+		_music_slider.step = 0.05
+		_music_slider.value_changed.connect(_on_music_volume_changed)
+
+	if _sfx_slider != null:
+		_sfx_slider.min_value = 0.0
+		_sfx_slider.max_value = 1.0
+		_sfx_slider.step = 0.05
+		_sfx_slider.value_changed.connect(_on_sfx_volume_changed)
+
+	_sync_audio_sliders()
+
+func _sync_audio_sliders() -> void:
+	if GameManager.instance == null or GameManager.instance.settings == null:
+		return
+
+	var settings = GameManager.instance.settings
+
+	if _master_slider != null:
+		_master_slider.set_value_no_signal(settings.master_volume)
+		_update_master_label(settings.master_volume)
+
+	if _music_slider != null:
+		_music_slider.set_value_no_signal(settings.music_volume)
+		_update_music_label(settings.music_volume)
+
+	if _sfx_slider != null:
+		_sfx_slider.set_value_no_signal(settings.sfx_volume)
+		_update_sfx_label(settings.sfx_volume)
+
+func _on_master_volume_changed(val: float) -> void:
+	if GameManager.instance != null and GameManager.instance.settings != null:
+		GameManager.instance.settings.master_volume = val
+		GameManager.instance.settings_changed.emit()
+		GameManager.instance.save_settings()
+	_update_master_label(val)
+
+func _on_music_volume_changed(val: float) -> void:
+	if GameManager.instance != null and GameManager.instance.settings != null:
+		GameManager.instance.settings.music_volume = val
+		GameManager.instance.settings_changed.emit()
+		GameManager.instance.save_settings()
+	_update_music_label(val)
+
+func _on_sfx_volume_changed(val: float) -> void:
+	if GameManager.instance != null and GameManager.instance.settings != null:
+		GameManager.instance.settings.sfx_volume = val
+		GameManager.instance.settings_changed.emit()
+		GameManager.instance.save_settings()
+	_update_sfx_label(val)
+
+func _update_master_label(val: float) -> void:
+	if _master_label != null:
+		_master_label.text = "MASTER VOL: %d%%" % int(round(val * 100.0))
+
+func _update_music_label(val: float) -> void:
+	if _music_label != null:
+		_music_label.text = "BGM VOL: %d%%" % int(round(val * 100.0))
+
+func _update_sfx_label(val: float) -> void:
+	if _sfx_label != null:
+		_sfx_label.text = "SFX VOL: %d%%" % int(round(val * 100.0))
 
 func _update_combo(count: int, is_player_one: bool) -> void:
 	if count <= 1:

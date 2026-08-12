@@ -3803,9 +3803,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -220.0
-offset_top = -140.0
+offset_top = -250.0
 offset_right = 220.0
-offset_bottom = 162.0
+offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_f72ne")
@@ -3817,40 +3817,112 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 24
 
-[node name="VBox" type="Control" parent="UI/BattleUI/PausePanel/PauseCard/Margin" unique_id=319448269]
+[node name="VBox" type="VBoxContainer" parent="UI/BattleUI/PausePanel/PauseCard/Margin" unique_id=319448269]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="PauseTitle" type="Label" parent="UI/BattleUI/PausePanel/PauseCard/Margin/VBox" unique_id=987654305]
-layout_mode = 0
-offset_top = 31.0
-offset_right = 374.0
-offset_bottom = 59.0
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 3
 theme_override_fonts/font = ExtResource("16_font")
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 24
 text = "GAME PAUSED"
 horizontal_alignment = 1
 
+[node name="Spacer1" type="Control" parent="UI/BattleUI/PausePanel/PauseCard/Margin/VBox" unique_id=987654308]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="AudioSection" type="VBoxContainer" parent="UI/BattleUI/PausePanel/PauseCard/Margin/VBox" unique_id=987654309]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="MasterGroup" type="VBoxContainer" parent="UI/BattleUI/PausePanel/PauseCard/Margin/VBox/AudioSection" unique_id=987654310]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="MasterVolumeLabel" type="Label" parent="UI/BattleUI/PausePanel/PauseCard/Margin/VBox/AudioSection/MasterGroup" unique_id=987654311]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("16_font")
+theme_override_font_sizes/font_size = 12
+text = "MASTER VOL: 100%"
+horizontal_alignment = 1
+
+[node name="MasterVolumeSlider" type="HSlider" parent="UI/BattleUI/PausePanel/PauseCard/Margin/VBox/AudioSection/MasterGroup" unique_id=987654312]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+focus_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="MusicGroup" type="VBoxContainer" parent="UI/BattleUI/PausePanel/PauseCard/Margin/VBox/AudioSection" unique_id=987654313]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="MusicVolumeLabel" type="Label" parent="UI/BattleUI/PausePanel/PauseCard/Margin/VBox/AudioSection/MusicGroup" unique_id=987654314]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("16_font")
+theme_override_font_sizes/font_size = 12
+text = "BGM VOL: 80%"
+horizontal_alignment = 1
+
+[node name="MusicVolumeSlider" type="HSlider" parent="UI/BattleUI/PausePanel/PauseCard/Margin/VBox/AudioSection/MusicGroup" unique_id=987654315]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+focus_mode = 2
+max_value = 1.0
+step = 0.05
+value = 0.8
+
+[node name="SFXGroup" type="VBoxContainer" parent="UI/BattleUI/PausePanel/PauseCard/Margin/VBox/AudioSection" unique_id=987654316]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="SFXVolumeLabel" type="Label" parent="UI/BattleUI/PausePanel/PauseCard/Margin/VBox/AudioSection/SFXGroup" unique_id=987654317]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("16_font")
+theme_override_font_sizes/font_size = 12
+text = "SFX VOL: 100%"
+horizontal_alignment = 1
+
+[node name="SFXVolumeSlider" type="HSlider" parent="UI/BattleUI/PausePanel/PauseCard/Margin/VBox/AudioSection/SFXGroup" unique_id=987654318]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+focus_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Spacer2" type="Control" parent="UI/BattleUI/PausePanel/PauseCard/Margin/VBox" unique_id=987654319]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+
 [node name="ResumeButton" parent="UI/BattleUI/PausePanel/PauseCard/Margin/VBox" unique_id=987654306 instance=ExtResource("15_btn")]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 67.0
-offset_top = 103.0
-offset_right = 302.7356
-offset_bottom = 156.0
+custom_minimum_size = Vector2(236, 53)
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_styles/normal = SubResource("StyleBoxTexture_guja6")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_djvpo")
 theme_override_styles/hover = SubResource("StyleBoxTexture_h26qm")
 
 [node name="QuitButton" parent="UI/BattleUI/PausePanel/PauseCard/Margin/VBox" unique_id=987654307 instance=ExtResource("15_btn")]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 66.0
-offset_top = 166.0
-offset_right = 301.736
-offset_bottom = 219.0
+custom_minimum_size = Vector2(236, 53)
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_styles/normal = SubResource("StyleBoxTexture_kisxl")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_y1kly")
 theme_override_styles/hover = SubResource("StyleBoxTexture_m1hkb")

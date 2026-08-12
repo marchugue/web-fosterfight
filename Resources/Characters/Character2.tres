@@ -5,12 +5,19 @@
 [ext_resource type="Resource" uid="uid://ec27wtpf3gtm" path="res://Resources/Attacks/samurai/attack3.tres" id="3_apl5n"]
 [ext_resource type="Script" uid="uid://b1ue3r540cj4x" path="res://Scripts/Character/CharacterData.gd" id="4_apl5n"]
 [ext_resource type="SpriteFrames" uid="uid://btfk4utaeek7h" path="res://Assets/Animations/character2/v1.tres" id="4_gagun"]
+[ext_resource type="AudioStream" uid="uid://cv7mxokuf68it" path="res://Assets/Audio/SFX/character2/shurt.wav" id="6_apl5n"]
+[ext_resource type="AudioStream" uid="uid://dwx7qr8ji3ycp" path="res://Assets/Audio/SFX/character2/sko.wav" id="7_lh0eo"]
 
 [resource]
 script = ExtResource("4_apl5n")
 display_name = "samurai"
 scene_path = "uid://bhei7bstktjts"
+max_health = 350.0
+move_speed = 215.0
+jump_force = 500.0
 attack1_data = ExtResource("1_gagun")
 attack2_data = ExtResource("2_nkhcd")
 attack3_data = ExtResource("3_apl5n")
+sfx_hurt = ExtResource("6_apl5n")
+sfx_ko = ExtResource("7_lh0eo")
 frames = ExtResource("4_gagun")

@@ -5,6 +5,8 @@
 [ext_resource type="Resource" uid="uid://b1avtw67uosvx" path="res://Resources/Attacks/witch/attack_2.tres" id="2_uheam"]
 [ext_resource type="Resource" uid="uid://dur3a6xok1f5s" path="res://Resources/Attacks/witch/attack_3.tres" id="3_dpb22"]
 [ext_resource type="SpriteFrames" uid="uid://ed0eha42j44p" path="res://Assets/Animations/character4/v1.tres" id="4_frames"]
+[ext_resource type="AudioStream" uid="uid://yhgkrntlwv3x" path="res://Assets/Audio/SFX/character4/ghurt.wav" id="6_dpb22"]
+[ext_resource type="AudioStream" uid="uid://boivgcuuqsc1i" path="res://Assets/Audio/SFX/character4/k.o gurl.mp3" id="7_i3faf"]
 
 [resource]
 script = ExtResource("1_qiepk")
@@ -13,4 +15,6 @@ scene_path = "uid://c03hh21l8kp5n"
 attack1_data = ExtResource("1_mwnvh")
 attack2_data = ExtResource("2_uheam")
 attack3_data = ExtResource("3_dpb22")
+sfx_hurt = ExtResource("6_dpb22")
+sfx_ko = ExtResource("7_i3faf")
 frames = ExtResource("4_frames")

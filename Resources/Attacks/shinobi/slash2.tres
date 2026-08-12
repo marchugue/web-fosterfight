@@ -2,8 +2,19 @@
 
 [ext_resource type="SpriteFrames" uid="uid://cch232fcpupd1" path="res://Assets/Animations/character3/v1.tres" id="1_3g6pg"]
 [ext_resource type="Script" uid="uid://1jn6asbjrouu" path="res://Scripts/Character/AttackData.gd" id="2_nutm4"]
+[ext_resource type="AudioStream" uid="uid://dwg6go37mgwc4" path="res://Assets/Audio/SFX/character3/c2.wav" id="3_nutm4"]
 
 [resource]
 script = ExtResource("2_nutm4")
+type = 2
 sprite_animation_name = "attack_2"
 custom_sprite_frames = ExtResource("1_3g6pg")
+sfx_on_start = ExtResource("3_nutm4")
+damage = 48.0
+knockback = 110.0
+hitstun = 0.38
+launch_force = Vector2(60, -480)
+effect = 1
+cooldown = 0.35
+can_cancel_after_hit = true
+allowed_cancel_targets = Array[int]([2])

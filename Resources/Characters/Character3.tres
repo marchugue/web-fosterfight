@@ -5,12 +5,19 @@
 [ext_resource type="Resource" uid="uid://dr8iemjksrnsd" path="res://Resources/Attacks/shinobi/slash3.tres" id="3_l3eaj"]
 [ext_resource type="SpriteFrames" uid="uid://cch232fcpupd1" path="res://Assets/Animations/character3/v1.tres" id="4_sekor"]
 [ext_resource type="Script" uid="uid://b1ue3r540cj4x" path="res://Scripts/Character/CharacterData.gd" id="5_fb1vi"]
+[ext_resource type="AudioStream" uid="uid://djmosjphd1i61" path="res://Assets/Audio/SFX/character3/hurt.wav" id="6_l3eaj"]
+[ext_resource type="AudioStream" uid="uid://opep7pc3drei" path="res://Assets/Audio/SFX/character3/3hurt.wav" id="7_sekor"]
 
 [resource]
 script = ExtResource("5_fb1vi")
 display_name = "shinobi"
 scene_path = "uid://xjnj047j7fg6"
+max_health = 880.0
+move_speed = 260.0
+jump_force = 580.0
 attack1_data = ExtResource("1_4gaje")
 attack2_data = ExtResource("2_3gpwj")
 attack3_data = ExtResource("3_l3eaj")
+sfx_hurt = ExtResource("6_l3eaj")
+sfx_ko = ExtResource("7_sekor")
 frames = ExtResource("4_sekor")

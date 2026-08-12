@@ -2,8 +2,19 @@
 
 [ext_resource type="SpriteFrames" uid="uid://btfk4utaeek7h" path="res://Assets/Animations/character2/v1.tres" id="1_maby2"]
 [ext_resource type="Script" uid="uid://1jn6asbjrouu" path="res://Scripts/Character/AttackData.gd" id="2_3mn1v"]
+[ext_resource type="AudioStream" uid="uid://cqthhsg0gjrcp" path="res://Assets/Audio/SFX/character2/s3.wav" id="3_3mn1v"]
 
 [resource]
 script = ExtResource("2_3mn1v")
+type = 4
 sprite_animation_name = "attack_3"
 custom_sprite_frames = ExtResource("1_maby2")
+sfx_on_start = ExtResource("3_3mn1v")
+damage = 125.0
+knockback = 280.0
+hitstun = 0.6
+launch_force = Vector2(80, 400)
+effect = 3
+cooldown = 0.8
+energy_cost = 30.0
+energy_gained_on_hit = 0.0

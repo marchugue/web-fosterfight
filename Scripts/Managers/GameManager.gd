@@ -47,6 +47,11 @@ func load_settings() -> void:
 			settings = loaded
 	settings_changed.emit()
 
+func save_settings() -> void:
+	const PATH = "res://Resources/Config/GameSettings.tres"
+	if settings != null:
+		ResourceSaver.save(settings, PATH)
+
 func set_selected_characters(player_one: CharacterData, player_two: CharacterData) -> void:
 	selected_player_one_character = player_one
 	selected_player_two_character = player_two

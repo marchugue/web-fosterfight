@@ -5,13 +5,18 @@
 [ext_resource type="Resource" uid="uid://x8nhw7j15yf3" path="res://Resources/Attacks/fighter/heavy_punch.tres" id="2_xuq11"]
 [ext_resource type="Resource" uid="uid://ck7oa0jppwt0x" path="res://Resources/Attacks/fighter/uppercut.tres" id="3_f4hbu"]
 [ext_resource type="SpriteFrames" uid="uid://xjrcujngnpis" path="res://Assets/Animations/character1/v1.tres" id="4_xuq11"]
+[ext_resource type="AudioStream" uid="uid://dn5wwbmjd7nr0" path="res://Assets/Audio/SFX/character1punch/hurt.mp3" id="6_5oglv"]
+[ext_resource type="AudioStream" uid="uid://hsq60fcn1xdc" path="res://Assets/Audio/SFX/character1punch/cko.mp3" id="7_ufu8w"]
 
 [resource]
 script = ExtResource("1_qiepk")
 display_name = "fighter"
 id = "c1"
 scene_path = "uid://bt7mtcs5a8xbi"
+move_speed = 230.0
 attack1_data = ExtResource("1_pt1rh")
 attack2_data = ExtResource("2_xuq11")
 attack3_data = ExtResource("3_f4hbu")
+sfx_hurt = ExtResource("6_5oglv")
+sfx_ko = ExtResource("7_ufu8w")
 frames = ExtResource("4_xuq11")

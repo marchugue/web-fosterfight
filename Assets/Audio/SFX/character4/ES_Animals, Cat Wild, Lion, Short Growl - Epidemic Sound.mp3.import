@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bnnmadj6xo3pt"
+path="res://.godot/imported/ES_Animals, Cat Wild, Lion, Short Growl - Epidemic Sound.mp3-679cce9cf4838eb4c62a27ade7e179a6.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/character4/ES_Animals, Cat Wild, Lion, Short Growl - Epidemic Sound.mp3"
+dest_files=["res://.godot/imported/ES_Animals, Cat Wild, Lion, Short Growl - Epidemic Sound.mp3-679cce9cf4838eb4c62a27ade7e179a6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

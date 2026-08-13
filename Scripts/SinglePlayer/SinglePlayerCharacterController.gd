@@ -365,7 +365,7 @@ func _process_flying_physics(delta: float) -> void:
 
 func _handle_attack_input() -> void:
 	var pressed_slot: int = 0
-	if Input.is_action_just_pressed("attack1"):
+	if Input.is_action_just_pressed("attack1") or Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		pressed_slot = 1
 	elif Input.is_action_just_pressed("attack2"):
 		pressed_slot = 2

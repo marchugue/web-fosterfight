@@ -110,6 +110,12 @@ func play_ko_sfx() -> void:
 func play_match_win_sfx() -> void:
 	play_menu_music()
 
+func play_match_lose_sfx() -> void:
+	if ko_sfx != null:
+		play_sfx(ko_sfx)
+	else:
+		play_menu_music()
+
 func play_select_character_voice_sfx() -> void:
 	if select_character_voice_sfx != null: play_sfx(select_character_voice_sfx)
 

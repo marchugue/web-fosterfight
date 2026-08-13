@@ -1,0 +1,2 @@
+class_name LegacySinglePlayerCharacterController
+extends "res://Scripts/SinglePlayer/SinglePlayerCharacterController.gd"

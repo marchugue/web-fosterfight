@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b5wgjjxlho76q"]
 
-[ext_resource type="Script" uid="uid://dwygse1xwjf2" path="res://Scripts/UI/LeaderboardUI.gd" id="1"]
+[ext_resource type="Script" uid="uid://busjx87a40kmq" path="res://Scripts/UI/LeaderboardUI.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://bwkte5mmpja27" path="res://Scenes/Components/AnimatedButton.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://d0rkevesj26ky" path="res://Assets/Sprites/UI/leaderboard/image 246.png" id="2_c032w"]
 [ext_resource type="Texture2D" uid="uid://defya3ou2bqb0" path="res://Assets/Sprites/UI/leaderboard/image 244.png" id="2_ep5dy"]

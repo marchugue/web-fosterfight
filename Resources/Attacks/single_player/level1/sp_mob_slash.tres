@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SinglePlayerAttackData" format=3 uid="uid://b1hnqgaa3cfi8"]
+
+[ext_resource type="Script" uid="uid://b32vi0y23eghm" path="res://Scripts/SinglePlayer/SinglePlayerAttackData.gd" id="1_attack"]
+
+[resource]
+script = ExtResource("1_attack")
+attack_name = "Mob Slash"
+damage = 25.0
+knockback = 100.0
+character_animation = "attack"
+activation_frame = 0
+vfx_spawn_frames = Array[int]([3])
+hit_frames = Array[int]([8])
+recovery_frames = 2
+melee_range = 85.0

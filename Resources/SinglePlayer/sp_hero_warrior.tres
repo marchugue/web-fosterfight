@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SinglePlayerCharacterData" format=3 uid="uid://sp_hero_warrior_01"]
+
+[ext_resource type="Script" path="res://Scripts/SinglePlayer/SinglePlayerCharacterData.gd" id="1_script"]
+[ext_resource type="Resource" path="res://Resources/Attacks/single_player/sp_player_light.tres" id="2_light"]
+[ext_resource type="SpriteFrames" uid="uid://vrcpjiglpyku" path="res://Assets/Animations/singlecharacter/archer.tres" id="3_frames"]
+
+[resource]
+script = ExtResource("1_script")
+character_id = "sp_warrior"
+display_name = "SinglePlayer Warrior"
+max_health = 1200.0
+move_speed = 240.0
+jump_force = 540.0
+attack_damage_multiplier = 1.15
+attack_speed_multiplier = 1.0
+sprite_frames = ExtResource("3_frames")
+attack1_data = ExtResource("2_light")

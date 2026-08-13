@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="SinglePlayerLevelData" format=3 uid="uid://5osyiqx7xnv3"]
+
+[ext_resource type="Script" uid="uid://dm00pv5esr6c5" path="res://Scripts/SinglePlayer/SinglePlayerLevelData.gd" id="1_script"]
+[ext_resource type="Resource" uid="uid://dmk3400icfast" path="res://Resources/SinglePlayer/mob_level1_bat.tres" id="2_bat"]
+[ext_resource type="Resource" uid="uid://c2578yb4jtu08" path="res://Resources/SinglePlayer/mob_level1_combo_warrior.tres" id="3_mob2"]
+[ext_resource type="Script" uid="uid://cc63ogi6ai85b" path="res://Scripts/SinglePlayer/SinglePlayerEntityData.gd" id="3_o66cm"]
+[ext_resource type="Resource" uid="uid://x5viaemgjcek" path="res://Resources/SinglePlayer/mob_wave3_orb_caster.tres" id="4_mob3"]
+[ext_resource type="Resource" uid="uid://cl7bpiqvylup2" path="res://Resources/SinglePlayer/boss_level1_golem.tres" id="5_boss"]
+[ext_resource type="PackedScene" uid="uid://dnroecwbs5kyp" path="res://Scenes/single_player/SinglePlayerBoss.tscn" id="6_3jipj"]
+[ext_resource type="PackedScene" uid="uid://c0hv3tuu0tp4h" path="res://Scenes/single_player/SinglePlayerMob1.tscn" id="7_3jipj"]
+[ext_resource type="PackedScene" uid="uid://cjenpouet6d7h" path="res://Scenes/single_player/SinglePlayerMob2.tscn" id="8_acj4c"]
+
+[resource]
+script = ExtResource("1_script")
+assigned_mob = ExtResource("2_bat")
+assigned_mobs = Array[ExtResource("3_o66cm")]([ExtResource("2_bat"), ExtResource("3_mob2"), ExtResource("4_mob3")])
+assigned_boss = ExtResource("5_boss")
+wave_1_count = 10
+wave_2_count = 23
+wave_3_count = 27
+wave_4_count = 1
+wave_2_stat_multiplier = 1.25
+wave_3_stat_multiplier = 1.5
+wave_4_stat_multiplier = 1.6

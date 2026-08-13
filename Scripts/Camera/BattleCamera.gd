@@ -6,11 +6,16 @@ extends Camera2D
 @export var round_manager_path: NodePath = ""
 @export var match_manager_path: NodePath = ""
 
-var _player_one: CharacterController
-var _player_two: CharacterController
-var _ko_focus: CharacterController
-var _round_win_focus: CharacterController
-var _intro_focus: CharacterController
+@export_group("Target Lock")
+@export var single_player_mode: bool = false
+@export var lock_on_player_one: bool = false
+@export var follow_vertical: bool = false
+
+var _player_one: Node2D
+var _player_two: Node2D
+var _ko_focus: Node2D
+var _round_win_focus: Node2D
+var _intro_focus: Node2D
 var _ko_active: bool = false
 var _round_win_active: bool = false
 var _intro_active: bool = false
@@ -20,9 +25,9 @@ var _current_zoom: Vector2 = Vector2.ONE
 
 func _ready() -> void:
 	if not player_one_path.is_empty():
-		_player_one = get_node_or_null(player_one_path) as CharacterController
+		_player_one = get_node_or_null(player_one_path) as Node2D
 	if not player_two_path.is_empty():
-		_player_two = get_node_or_null(player_two_path) as CharacterController
+		_player_two = get_node_or_null(player_two_path) as Node2D
 
 	position_smoothing_enabled = false
 	global_position = Vector2(Constants.Stage.DEFAULT_CENTER_X, Constants.Camera.DEFAULT_Y)
@@ -44,12 +49,12 @@ func _ready() -> void:
 		if match_mgr != null:
 			match_mgr.match_ended.connect(_on_match_ended)
 
-func update_fighter_references(player_one: CharacterController, player_two: CharacterController) -> void:
+func update_fighter_references(player_one: Node2D, player_two: Node2D) -> void:
 	_player_one = player_one
 	_player_two = player_two
 
 func _process(delta: float) -> void:
-	if _player_one == null or _player_two == null:
+	if _player_one == null:
 		return
 
 	if _ko_active and _ko_focus != null:
@@ -61,7 +66,7 @@ func _process(delta: float) -> void:
 	else:
 		_update_normal_camera(delta)
 
-func _on_knockout(loser: CharacterController, winner: CharacterController) -> void:
+func _on_knockout(loser: Node2D, winner: Node2D) -> void:
 	_ko_focus = loser
 	_ko_active = true
 	_round_win_active = false
@@ -69,14 +74,14 @@ func _on_knockout(loser: CharacterController, winner: CharacterController) -> vo
 	_intro_active = false
 	_intro_focus = null
 
-func _on_round_ended(winner: CharacterController, _was_timeout: bool) -> void:
+func _on_round_ended(winner: Node2D, _was_timeout: bool) -> void:
 	_ko_active = false
 	_ko_focus = null
 	if winner != null:
 		_round_win_active = true
 		_round_win_focus = winner
 
-func _on_match_ended(winner: CharacterController) -> void:
+func _on_match_ended(winner: Node2D) -> void:
 	_round_win_active = true
 	_round_win_focus = winner
 
@@ -89,7 +94,7 @@ func _on_round_intro_started(round_number: int, _p1_wins: int, _p2_wins: int) ->
 	_intro_active = _intro_is_match_opening
 	_intro_fight_pulse = false
 
-func _on_round_intro_player_focus(player: CharacterController, _display_name: String, _player_num: int) -> void:
+func _on_round_intro_player_focus(player: Node2D, _display_name: String, _player_num: int) -> void:
 	_intro_focus = player
 	_intro_fight_pulse = false
 
@@ -108,16 +113,17 @@ func _on_round_started() -> void:
 
 func _update_intro_camera(dt: float) -> void:
 	if _intro_fight_pulse:
-		var midpoint = (_player_one.global_position.x + _player_two.global_position.x) * 0.5
+		var midpoint = _player_one.global_position.x if _player_two == null else (_player_one.global_position.x + _player_two.global_position.x) * 0.5
 		_apply_smoothed_camera(midpoint, Constants.Camera.DEFAULT_Y, Constants.Camera.MAX_ZOOM, dt * 2.0)
 		return
 
 	if _intro_focus == null:
+		_update_intro_character_camera(_player_one, dt)
 		return
 
 	_update_intro_character_camera(_intro_focus, dt)
 
-func _update_intro_character_camera(focus: CharacterController, dt: float) -> void:
+func _update_intro_character_camera(focus: Node2D, dt: float) -> void:
 	var target_zoom = Constants.Camera.INTRO_FULL_BODY_ZOOM
 	var half_view_x = (Constants.Camera.VIEWPORT_WIDTH * 0.5) / target_zoom
 	var target_x = clampf(focus.global_position.x, Constants.Stage.WORLD_MIN_X + half_view_x, Constants.Stage.WORLD_MAX_X - half_view_x)
@@ -126,20 +132,31 @@ func _update_intro_character_camera(focus: CharacterController, dt: float) -> vo
 	_apply_smoothed_camera(target_x, target_y, target_zoom, dt * 1.4)
 
 func _update_normal_camera(dt: float) -> void:
-	var p1x = _player_one.global_position.x
-	var p2x = _player_two.global_position.x
-	var left_x = minf(p1x, p2x)
-	var right_x = maxf(p1x, p2x)
-	var midpoint = (left_x + right_x) * 0.5
+	if _player_one == null or not is_instance_valid(_player_one):
+		return
+
+	var target_x: float
+	if single_player_mode or lock_on_player_one or _player_two == null or not is_instance_valid(_player_two):
+		target_x = _player_one.global_position.x
+	else:
+		var p1x = _player_one.global_position.x
+		var p2x = _player_two.global_position.x
+		var left_x = minf(p1x, p2x)
+		var right_x = maxf(p1x, p2x)
+		target_x = (left_x + right_x) * 0.5
+
+	var target_y = Constants.Camera.DEFAULT_Y
+	if follow_vertical:
+		target_y = _player_one.global_position.y - 30.0
 
 	var target_zoom = Constants.Camera.MAX_ZOOM
 	var half_view = (Constants.Camera.VIEWPORT_WIDTH * 0.5) / target_zoom
 
 	var world_min_cam = Constants.Stage.WORLD_MIN_X + half_view
 	var world_max_cam = Constants.Stage.WORLD_MAX_X - half_view
-	var target_x = clampf(midpoint, world_min_cam, world_max_cam)
+	target_x = clampf(target_x, world_min_cam, world_max_cam)
 
-	_apply_smoothed_camera(target_x, Constants.Camera.DEFAULT_Y, target_zoom, dt)
+	_apply_smoothed_camera(target_x, target_y, target_zoom, dt)
 
 func _update_focus_camera(focus: CharacterController, target_zoom: float, dt: float) -> void:
 	var half_view = (Constants.Camera.VIEWPORT_WIDTH * 0.5) / target_zoom

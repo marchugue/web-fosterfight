@@ -8,7 +8,7 @@ var _data: Dictionary = {
 	"matches": []
 }
 
-func _init(db_path: String = Constants.Database.LEADERBOARD_DB_PATH) -> void:
+func _init(_db_path: String = Constants.Database.LEADERBOARD_DB_PATH) -> void:
 	load_db()
 
 func load_db() -> void:

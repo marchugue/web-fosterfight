@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://oh8exth07vud"]
+
+[ext_resource type="Script" uid="uid://7s2ymwr8mhxn" path="res://Scripts/VFX/ArrowVFX.gd" id="1_script"]
+[ext_resource type="SpriteFrames" uid="uid://vrcpjiglpyku" path="res://Assets/Animations/singlecharacter/archer.tres" id="2_5w0pi"]
+
+[node name="ArrowVFX" type="Node2D" unique_id=987101]
+script = ExtResource("1_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=987104]
+sprite_frames = ExtResource("2_5w0pi")
+animation = &"arrow"
+offset = Vector2(15.49, 0.48)

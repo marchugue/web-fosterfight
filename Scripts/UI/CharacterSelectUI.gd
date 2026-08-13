@@ -387,8 +387,8 @@ func _update_slot_indicator_positions() -> void:
 		var p2_top_y = rect2.position.y - indicator_size2.y * 0.45
 		_p2_slot_indicator.global_position = Vector2(p2_center_x - indicator_size2.x * 0.5, p2_top_y)
 
-	_p1_slot_indicator.visible = true
-	_p2_slot_indicator.visible = true
+	if _p1_slot_indicator != null: _p1_slot_indicator.visible = true
+	if _p2_slot_indicator != null: _p2_slot_indicator.visible = true
 
 func _confirm(player_one: bool) -> void:
 	if player_one: _confirmed_one = true

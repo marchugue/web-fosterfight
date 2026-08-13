@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SinglePlayerAttackData" format=3 uid="uid://431lu7acux8n"]
+
+[ext_resource type="Script" uid="uid://b32vi0y23eghm" path="res://Scripts/SinglePlayer/SinglePlayerAttackData.gd" id="1_attack"]
+
+[resource]
+script = ExtResource("1_attack")
+attack_name = "Orb Blast"
+delivery_type = 1
+damage = 30.0
+character_animation = "attack"
+activation_frame = null
+vfx_spawn_frames = Array[int]([6])
+hit_frames = Array[int]([6])
+melee_range = 350.0
+is_uninterruptable = true

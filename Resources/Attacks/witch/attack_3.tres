@@ -6,6 +6,14 @@
 
 [resource]
 script = ExtResource("3_j60oi")
+type = 3
 sprite_animation_name = "special"
 custom_sprite_frames = ExtResource("1_nqkce")
 sfx_on_start = ExtResource("3_bea2u")
+damage = 135.0
+knockback = 300.0
+hitstun = 0.55
+launch_force = Vector2(200, -250)
+effect = 4
+cooldown = 10.0
+allowed_cancel_targets = Array[int]([2])

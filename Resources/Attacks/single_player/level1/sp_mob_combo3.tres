@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SinglePlayerAttackData" format=3 uid="uid://umspdm8jn22t"]
+
+[ext_resource type="Script" uid="uid://b32vi0y23eghm" path="res://Scripts/SinglePlayer/SinglePlayerAttackData.gd" id="1_attack"]
+
+[resource]
+script = ExtResource("1_attack")
+attack_name = "Combo Finisher"
+damage = 28.0
+knockback = 180.0
+character_animation = "attack_3"
+activation_frame = 0
+vfx_spawn_frames = Array[int]([3])
+hit_frames = Array[int]([4])
+recovery_frames = 5
+melee_range = 105.0

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SinglePlayerEntityData" format=3 uid="uid://cwpkd820c3plv"]
+
+[ext_resource type="Script" uid="uid://b32vi0y23eghm" path="res://Scripts/SinglePlayer/SinglePlayerAttackData.gd" id="1_65u7s"]
+[ext_resource type="Script" uid="uid://cc63ogi6ai85b" path="res://Scripts/SinglePlayer/SinglePlayerEntityData.gd" id="1_script"]
+[ext_resource type="Resource" uid="uid://b1hnqgaa3cfi8" path="res://Resources/Attacks/single_player/level1/sp_mob_slash.tres" id="2_attack"]
+[ext_resource type="SpriteFrames" uid="uid://ed0eha42j44p" path="res://Assets/Animations/character4/v1.tres" id="3_frames"]
+
+[resource]
+script = ExtResource("1_script")
+display_name = "Forest Goblin"
+max_health = 800.0
+movement_speed = 90.0
+jump_force = 480.0
+attack_range = 90.0
+sprite_frames = ExtResource("3_frames")
+scale_multiplier = 1.0
+attacks = Array[ExtResource("1_65u7s")]([ExtResource("2_attack")])

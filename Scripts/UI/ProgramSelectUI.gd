@@ -14,12 +14,17 @@ func _ready() -> void:
 	back_btn.pressed.connect(_on_back_pressed)
 
 	var cpu_btn = get_node(cpu_button_path) as Button
-	cpu_btn.disabled = true
-	cpu_btn.tooltip_text = "CPU opponents are planned — see README's Future Improvements."
+	if cpu_btn != null:
+		cpu_btn.disabled = false
+		cpu_btn.pressed.connect(_on_cpu_pressed)
 
 func _on_versus_pressed() -> void:
 	if GameManager.instance != null:
 		GameManager.instance.go_to_name_entry()
+
+func _on_cpu_pressed() -> void:
+	if GameManager.instance != null:
+		GameManager.instance.go_to_single_player()
 
 func _on_back_pressed() -> void:
 	if GameManager.instance != null:

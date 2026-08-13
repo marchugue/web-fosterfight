@@ -16,6 +16,6 @@ knockback = 160.0
 hitstun = 0.5
 launch_force = Vector2(120, -50)
 effect = 2
-cooldown = 0.45
+cooldown = 1.5
 can_cancel_after_hit = true
 allowed_cancel_targets = Array[int]([2])

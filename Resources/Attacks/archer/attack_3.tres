@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://dnb0ybbd1hw2a"]
+
+[ext_resource type="SpriteFrames" uid="uid://ed0eha42j44p" path="res://Assets/Animations/character4/v1.tres" id="1_6yaib"]
+[ext_resource type="Script" uid="uid://1jn6asbjrouu" path="res://Scripts/Character/AttackData.gd" id="2_jej0j"]
+[ext_resource type="AudioStream" uid="uid://bnnmadj6xo3pt" path="res://Assets/Audio/SFX/character4/ES_Animals, Cat Wild, Lion, Short Growl - Epidemic Sound.mp3" id="3_mgusv"]
+
+[resource]
+script = ExtResource("2_jej0j")
+type = 3
+sprite_animation_name = "special"
+custom_sprite_frames = ExtResource("1_6yaib")
+sfx_on_start = ExtResource("3_mgusv")
+damage = 135.0
+knockback = 300.0
+hitstun = 0.55
+launch_force = Vector2(200, -250)
+effect = 4
+cooldown = 10.0
+allowed_cancel_targets = Array[int]([2])

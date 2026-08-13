@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="SinglePlayerEntityData" format=3 uid="uid://c2578yb4jtu08"]
+
+[ext_resource type="Script" uid="uid://b32vi0y23eghm" path="res://Scripts/SinglePlayer/SinglePlayerAttackData.gd" id="1_attack_script"]
+[ext_resource type="Script" uid="uid://cc63ogi6ai85b" path="res://Scripts/SinglePlayer/SinglePlayerEntityData.gd" id="1_script"]
+[ext_resource type="Resource" uid="uid://jfqiml83etjx" path="res://Resources/Attacks/single_player/level1/sp_mob_combo1.tres" id="2_atk1"]
+[ext_resource type="Resource" uid="uid://dth65ryu37nx0" path="res://Resources/Attacks/single_player/level1/sp_mob_combo2.tres" id="3_atk2"]
+[ext_resource type="Resource" uid="uid://umspdm8jn22t" path="res://Resources/Attacks/single_player/level1/sp_mob_combo3.tres" id="4_atk3"]
+[ext_resource type="SpriteFrames" uid="uid://di4tdna6glecj" path="res://Assets/Animations/mobs/mob2.tres" id="5_mob2_frames"]
+
+[resource]
+script = ExtResource("1_script")
+display_name = "Shadow Warrior"
+max_health = 600.0
+movement_speed = 84.0
+jump_force = 500.0
+attack_range = 95.0
+sprite_frames = ExtResource("5_mob2_frames")
+attacks = Array[ExtResource("1_attack_script")]([ExtResource("2_atk1"), ExtResource("3_atk2"), ExtResource("4_atk3")])

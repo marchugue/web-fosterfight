@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="SinglePlayerEntityData" format=3 uid="uid://dmk3400icfast"]
+
+[ext_resource type="Script" uid="uid://b32vi0y23eghm" path="res://Scripts/SinglePlayer/SinglePlayerAttackData.gd" id="1_attack_script"]
+[ext_resource type="Script" uid="uid://cc63ogi6ai85b" path="res://Scripts/SinglePlayer/SinglePlayerEntityData.gd" id="1_script"]
+[ext_resource type="Resource" uid="uid://b1hnqgaa3cfi8" path="res://Resources/Attacks/single_player/level1/sp_mob_slash.tres" id="2_attack"]
+[ext_resource type="SpriteFrames" uid="uid://bmhyg4w3s11yc" path="res://Assets/Animations/mobs/mob1.tres" id="4_cr8we"]
+
+[resource]
+script = ExtResource("1_script")
+display_name = "Shadow Bat"
+max_health = 90.0
+attack_damage_multiplier = 0.7
+movement_speed = 110.0
+jump_force = 480.0
+is_flying = true
+sprite_frames = ExtResource("4_cr8we")
+scale_multiplier = 0.72
+attacks = Array[ExtResource("1_attack_script")]([ExtResource("2_attack")])

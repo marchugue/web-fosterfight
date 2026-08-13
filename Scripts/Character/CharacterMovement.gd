@@ -7,6 +7,11 @@ signal dash_started(direction: int)
 signal dash_ended
 
 var move_speed: float = 300.0
+
+var speed: float:
+	get: return move_speed
+	set(val): move_speed = val
+
 var jump_force: float = 520.0
 var facing_direction: int = 1
 
@@ -160,6 +165,13 @@ func set_facing(direction: int) -> void:
 
 func cancel_dash() -> void:
 	_dash_time_remaining = 0.0
+
+func move(dir_val: float) -> void:
+	if dir_val != 0.0:
+		set_facing(1 if dir_val > 0.0 else -1)
+
+func stop() -> void:
+	pass
 
 func reset_for_new_round() -> void:
 	_dash_time_remaining = 0.0

@@ -7,3 +7,8 @@
 script = ExtResource("2_b5es3")
 sprite_animation_name = "attack_1"
 custom_sprite_frames = ExtResource("1_a6acm")
+attack_speed = 2.0
+knockback = 110.0
+cooldown = 0.2
+can_cancel_after_hit = true
+allowed_cancel_targets = Array[int]([1, 2])

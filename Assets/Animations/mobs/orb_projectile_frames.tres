@@ -1,0 +1,71 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://orb_proj_frames_001"]
+
+[ext_resource type="Texture2D" path="res://Assets/mobs/boss2/Sprites/Projectile/Moving.png" id="1_mov"]
+[ext_resource type="Texture2D" path="res://Assets/mobs/boss2/Sprites/Projectile/Explode.png" id="2_exp"]
+
+[sub_resource type="AtlasTexture" id="mov_0"]
+texture = ExtResource("1_mov")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="mov_1"]
+texture = ExtResource("1_mov")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="mov_2"]
+texture = ExtResource("1_mov")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="mov_3"]
+texture = ExtResource("1_mov")
+region = Rect2(150, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="exp_0"]
+texture = ExtResource("2_exp")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="exp_1"]
+texture = ExtResource("2_exp")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="exp_2"]
+texture = ExtResource("2_exp")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="exp_3"]
+texture = ExtResource("2_exp")
+region = Rect2(150, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="exp_4"]
+texture = ExtResource("2_exp")
+region = Rect2(200, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="exp_5"]
+texture = ExtResource("2_exp")
+region = Rect2(250, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="exp_6"]
+texture = ExtResource("2_exp")
+region = Rect2(300, 0, 50, 50)
+
+[resource]
+animations = [{
+"frames": [SubResource("mov_0"), SubResource("mov_1"), SubResource("mov_2"), SubResource("mov_3")],
+"loop": true,
+"name": &"moving",
+"speed": 12.0
+}, {
+"frames": [SubResource("mov_0"), SubResource("mov_1"), SubResource("mov_2"), SubResource("mov_3")],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}, {
+"frames": [SubResource("exp_0"), SubResource("exp_1"), SubResource("exp_2"), SubResource("exp_3"), SubResource("exp_4"), SubResource("exp_5"), SubResource("exp_6")],
+"loop": false,
+"name": &"explode",
+"speed": 14.0
+}, {
+"frames": [SubResource("exp_0"), SubResource("exp_1"), SubResource("exp_2"), SubResource("exp_3"), SubResource("exp_4"), SubResource("exp_5"), SubResource("exp_6")],
+"loop": false,
+"name": &"death",
+"speed": 14.0
+}]

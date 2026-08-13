@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://c7nj1bmhbmmuj"]
+
+[ext_resource type="Script" uid="uid://1jn6asbjrouu" path="res://Scripts/Character/AttackData.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+attack_name = "Mob Swipe"
+sprite_animation_name = "attack_1"
+damage = 35.0
+knockback = 100.0
+hitstun = 0.25
+cooldown = 1.0
+energy_gained_on_hit = 5.0

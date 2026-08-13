@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://86mlh78fcdvh"]
+
+[ext_resource type="Script" uid="uid://cfr7g8hdfj510" path="res://Scripts/VFX/SpellVFX.gd" id="1_script"]
+[ext_resource type="SpriteFrames" uid="uid://vrcpjiglpyku" path="res://Assets/Animations/singlecharacter/archer.tres" id="2_6gw4n"]
+
+[node name="SpellVFX" type="Node2D" unique_id=987201]
+script = ExtResource("1_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=987204]
+sprite_frames = ExtResource("2_6gw4n")
+animation = &"vfx2"
+offset = Vector2(127.98, 0)

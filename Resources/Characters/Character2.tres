@@ -12,7 +12,7 @@
 script = ExtResource("4_apl5n")
 display_name = "samurai"
 scene_path = "uid://bhei7bstktjts"
-max_health = 350.0
+max_health = 985.0
 move_speed = 215.0
 jump_force = 500.0
 attack1_data = ExtResource("1_gagun")

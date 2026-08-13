@@ -50,7 +50,7 @@ func set_facing(direction: int) -> void:
 	if direction != 0:
 		_facing_direction = 1 if direction > 0 else -1
 	if _sprite != null:
-		_sprite.flip_h = _facing_direction < 0
+		_sprite.flip_h = (_facing_direction < 0)
 
 func set_speed_scale(speed_scale: float) -> void:
 	if _sprite != null:
@@ -83,7 +83,23 @@ func try_play_animation_key(key: String, speed_scale: float = 1.0, custom_frames
 	_locked_until_finished = true
 	_current_state = CharacterState.ATTACK1
 	_sprite.speed_scale = maxf(0.1, speed_scale)
+
+	# Ensure non-looping so animation_finished signal fires
+	if _sprite.sprite_frames != null and _sprite.sprite_frames.has_animation(resolved):
+		_sprite.sprite_frames.set_animation_loop_mode(resolved, SpriteFrames.LOOP_NONE)
+
 	_sprite.play(resolved)
+
+	# Safety fallback timer in case signal is missed
+	var frame_count = _sprite.sprite_frames.get_frame_count(resolved) if _sprite.sprite_frames.has_animation(resolved) else 4
+	var fps = _sprite.sprite_frames.get_animation_speed(resolved) if _sprite.sprite_frames.has_animation(resolved) else 10.0
+	var expected_duration = (float(frame_count) / maxf(1.0, fps)) / maxf(0.1, speed_scale) + 0.15
+
+	get_tree().create_timer(expected_duration).timeout.connect(func():
+		if _locked_until_finished and _current_state == CharacterState.ATTACK1:
+			_on_sprite_animation_finished()
+	, CONNECT_ONE_SHOT)
+
 	return true
 
 func play_state(state: CharacterState) -> void:
@@ -110,7 +126,7 @@ func play_state(state: CharacterState) -> void:
 	var raw_name = _data.get_animation_name(key)
 	var resolved = _resolve_existing_animation_name(raw_name)
 	if not resolved.is_empty():
-		if state == CharacterState.BLOCK and _sprite.sprite_frames != null:
+		if (state == CharacterState.BLOCK or is_attack_state) and _sprite.sprite_frames != null:
 			_sprite.sprite_frames.set_animation_loop_mode(resolved, SpriteFrames.LOOP_NONE)
 		_sprite.play(resolved)
 
@@ -129,6 +145,11 @@ func _resolve_existing_animation_name(p_name: String) -> String:
 
 	if _sprite.sprite_frames.has_animation(p_name):
 		return p_name
+
+	if p_name == "walk":
+		for candidate in ["walk_forward", "walking", "walk_backward"]:
+			if _sprite.sprite_frames.has_animation(candidate):
+				return candidate
 
 	var alt_name = ""
 	if "_" in p_name:

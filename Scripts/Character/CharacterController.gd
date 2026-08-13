@@ -97,6 +97,9 @@ func _ready() -> void:
 		combat.set_sprite(sprite_node)
 
 func initialize_from_data(p_data: CharacterData) -> void:
+	if p_data == null:
+		push_warning("CharacterController: p_data is null, continuing initialization.")
+		return
 	data = p_data
 	if movement != null: movement.initialize(data)
 	if combat != null: combat.initialize(data)
@@ -383,7 +386,7 @@ func _try_process_attack_input(input: FrameInput) -> void:
 		if _buffered_attack_frames <= 0:
 			_buffered_attack_input = null
 
-func _update_animation_state(input: FrameInput) -> void:
+func _update_animation_state(_input: FrameInput) -> void:
 	if health.is_knocked_out:
 		anim.play_state(CharacterAnimation.CharacterState.KO)
 		return

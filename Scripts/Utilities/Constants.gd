@@ -14,6 +14,10 @@ class Scenes:
 	const CHARACTER_2_COMPONENT = "res://Scenes/Components/Character2.tscn"
 	const CHARACTER_3_COMPONENT = "res://Scenes/Components/Character3.tscn"
 	const CHARACTER_4_COMPONENT = "res://Scenes/Components/Character4.tscn"
+	const SINGLE_PLAYER_CHARACTER_COMPONENT = "res://Scenes/Components/characters/SinglePlayerCharacter.tscn"
+	const SINGLE_PLAYER_MOB = "res://Scenes/single_player/SinglePlayerMob2.tscn"
+	const SINGLE_PLAYER_BOSS = "res://Scenes/single_player/SinglePlayerBoss.tscn"
+	const SINGLE_PLAYER_LEVEL1 = "res://Scenes/single_player/level1.tscn"
 	const HEALTH_BAR_COMPONENT = "res://Scenes/Components/HealthBar.tscn"
 	const TIMER_COMPONENT = "res://Scenes/Components/Timer.tscn"
 

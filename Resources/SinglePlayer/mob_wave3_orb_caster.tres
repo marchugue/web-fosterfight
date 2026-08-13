@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="SinglePlayerEntityData" format=3 uid="uid://x5viaemgjcek"]
+
+[ext_resource type="Script" uid="uid://b32vi0y23eghm" path="res://Scripts/SinglePlayer/SinglePlayerAttackData.gd" id="1_attack_script"]
+[ext_resource type="Script" uid="uid://cc63ogi6ai85b" path="res://Scripts/SinglePlayer/SinglePlayerEntityData.gd" id="1_script"]
+[ext_resource type="Resource" uid="uid://431lu7acux8n" path="res://Resources/Attacks/single_player/level1/sp_orb_attack.tres" id="2_orb_atk"]
+[ext_resource type="SpriteFrames" uid="uid://chpp8pfqubfvx" path="res://Assets/Animations/mobs/mob3.tres" id="3_mob3_frames"]
+
+[resource]
+script = ExtResource("1_script")
+display_name = "Void Caster"
+max_health = 600.0
+attack_damage_multiplier = 1.1
+movement_speed = 90.0
+jump_force = 480.0
+attack_range = 380.0
+sprite_frames = ExtResource("3_mob3_frames")
+scale_multiplier = 0.95
+attacks = Array[ExtResource("1_attack_script")]([ExtResource("2_orb_atk")])

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SinglePlayerCharacterData" format=3 uid="uid://dhhidp2w6sbpi"]
+
+[ext_resource type="Script" uid="uid://cjfx8ty51xn57" path="res://Scripts/SinglePlayer/SinglePlayerCharacterData.gd" id="1_script"]
+[ext_resource type="Resource" uid="uid://hlbqvgp1d6va" path="res://Resources/Attacks/single_player/level1/sp_bow_shot.tres" id="2_bow"]
+[ext_resource type="Resource" uid="uid://blwdnqkge4pqu" path="res://Resources/Attacks/single_player/sp_laser_beam.tres" id="3_laser"]
+[ext_resource type="Resource" uid="uid://ca2vtocdojo57" path="res://Resources/Attacks/single_player/sp_spell_burst.tres" id="4_spell"]
+[ext_resource type="SpriteFrames" uid="uid://vrcpjiglpyku" path="res://Assets/Animations/singlecharacter/archer.tres" id="5_frames"]
+
+[resource]
+script = ExtResource("1_script")
+character_id = "sp_archer"
+display_name = "SinglePlayer Archer"
+move_speed = 245.0
+sprite_frames = ExtResource("5_frames")
+attack1_data = ExtResource("2_bow")
+attack2_data = ExtResource("3_laser")
+attack3_data = ExtResource("4_spell")

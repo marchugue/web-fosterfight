@@ -12,6 +12,9 @@
 script = ExtResource("1_qiepk")
 display_name = "witch"
 scene_path = "uid://c03hh21l8kp5n"
+max_health = 900.0
+move_speed = 200.0
+jump_force = 490.0
 attack1_data = ExtResource("1_mwnvh")
 attack2_data = ExtResource("2_uheam")
 attack3_data = ExtResource("3_dpb22")

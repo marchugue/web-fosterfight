@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://mob_atk_tackle_01"]
+
+[ext_resource type="Script" uid="uid://1jn6asbjrouu" path="res://Scripts/Character/AttackData.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+attack_name = "Mob Tackle"
+character_id = ""
+type = 0
+sprite_animation_name = "attack_02"
+attack_speed = 1.2
+hitbox_start_frame = 1
+hitbox_duration = 3
+hitbox_offset = Vector2(0, 0)
+hitbox_scale_multiplier = Vector2(1.2, 1.2)
+damage = 50.0
+knockback = 180.0
+hitstun = 0.35
+launch_force = Vector2(50, -100)
+effect = 0
+cooldown = 1.5
+energy_cost = 0.0
+energy_gained_on_hit = 8.0
+can_cancel_after_hit = false
+allowed_cancel_targets = Array[int]([])
+light_attack_string_cancel = false
+string_steps = Array[ExtResource("1_script")]([])

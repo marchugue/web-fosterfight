@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SinglePlayerAttackData" format=3 uid="uid://jfqiml83etjx"]
+
+[ext_resource type="Script" uid="uid://b32vi0y23eghm" path="res://Scripts/SinglePlayer/SinglePlayerAttackData.gd" id="1_attack"]
+
+[resource]
+script = ExtResource("1_attack")
+attack_name = "Combo Strike 1"
+damage = 16.0
+knockback = 80.0
+character_animation = "attack"
+activation_frame = 0
+hit_frames = Array[int]([4])
+recovery_frames = 2
+melee_range = 95.0

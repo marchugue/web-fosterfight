@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dej51cgeingrh"]
 
-[ext_resource type="Script" uid="uid://vbo2u6ic8e3w" path="res://Scripts/UI/MainMenuUI.gd" id="1"]
+[ext_resource type="Script" uid="uid://cg4evevosjr8v" path="res://Scripts/UI/MainMenuUI.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://bwkte5mmpja27" path="res://Scenes/Components/AnimatedButton.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://b11onuufnkuvt" path="res://Assets/Sprites/UI/mainmenu/start/image 237.png" id="2_7467j"]
 [ext_resource type="Texture2D" uid="uid://cfjlckokvi2em" path="res://Assets/Sprites/Backgrounds/Rectangle 60.png" id="3_7v4os"]

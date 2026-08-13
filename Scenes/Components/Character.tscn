@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://cvgid8s4x2bw7"]
 
-[ext_resource type="Script" uid="uid://pwosotp36yvf" path="res://Scripts/Character/CharacterController.gd" id="1"]
-[ext_resource type="Script" uid="uid://bbu08peqn3h35" path="res://Scripts/Character/CharacterMovement.gd" id="2"]
+[ext_resource type="Script" uid="uid://cdeufkanu7rgl" path="res://Scripts/Character/CharacterController.gd" id="1"]
+[ext_resource type="Script" uid="uid://btdj280lpy8nw" path="res://Scripts/Character/CharacterMovement.gd" id="2"]
 [ext_resource type="SpriteFrames" uid="uid://ed0eha42j44p" path="res://Assets/Animations/character4/v1.tres" id="2_id8sg"]
-[ext_resource type="Script" uid="uid://evl7ct4l75gn" path="res://Scripts/Character/CharacterCombat.gd" id="3"]
-[ext_resource type="Script" uid="uid://cpmiblagr6um4" path="res://Scripts/Character/CharacterAnimation.gd" id="4"]
-[ext_resource type="Script" uid="uid://5f5anh0pnj47" path="res://Scripts/Character/CharacterHealth.gd" id="5"]
-[ext_resource type="Script" uid="uid://btlfk0rpqr052" path="res://Scripts/Character/CharacterEnergy.gd" id="6"]
-[ext_resource type="Script" uid="uid://fflwn8vma8nb" path="res://Scripts/Character/CharacterCombo.gd" id="7"]
-[ext_resource type="Script" uid="uid://dr7vi8pcmgu1u" path="res://Scripts/Character/CommandComboSystem.gd" id="7b"]
-[ext_resource type="Script" uid="uid://ddi3ng13fc5du" path="res://Scripts/Character/DashTrail.gd" id="11"]
+[ext_resource type="Script" uid="uid://d1new4jgscq2f" path="res://Scripts/Character/CharacterCombat.gd" id="3"]
+[ext_resource type="Script" uid="uid://dkw356yicmmcn" path="res://Scripts/Character/CharacterAnimation.gd" id="4"]
+[ext_resource type="Script" uid="uid://jaonu3wk28tq" path="res://Scripts/Character/CharacterHealth.gd" id="5"]
+[ext_resource type="Script" uid="uid://cv2jnujkqge67" path="res://Scripts/Character/CharacterEnergy.gd" id="6"]
+[ext_resource type="Script" uid="uid://v7pesnl6aani" path="res://Scripts/Character/CharacterCombo.gd" id="7"]
+[ext_resource type="Script" uid="uid://y2e7k5dh0qys" path="res://Scripts/Character/CommandComboSystem.gd" id="7b"]
+[ext_resource type="Script" uid="uid://w02mvpp3k4wt" path="res://Scripts/Character/DashTrail.gd" id="11"]
 [ext_resource type="Texture2D" uid="uid://ce6d3mx1e04of" path="res://Assets/Sprites/UI/battleHUD/indicator/Property 1=Variant2.png" id="12_indicator"]
 
 [sub_resource type="CapsuleShape2D" id="BodyShape"]
@@ -34,14 +34,14 @@ _data = {
 &"attack_01": SubResource("Animation_mxibf")
 }
 
-
 [node name="CharacterController" type="CharacterBody2D" unique_id=18655221]
 collision_layer = 2
-collision_mask = 3
+collision_mask = 1
 script = ExtResource("1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=271064383]
-position = Vector2(0, -9)
+position = Vector2(0, -16.999998)
+scale = Vector2(1.015, 1.83)
 shape = SubResource("BodyShape")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1202145195]

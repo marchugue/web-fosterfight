@@ -27,30 +27,39 @@ func _ready() -> void:
 	_initialize_match.call_deferred()
 
 func _initialize_match() -> void:
-	_player_one = get_node(player_one_path) as CharacterController
-	_player_two = get_node(player_two_path) as CharacterController
-	_round_manager = get_node(round_manager_path) as RoundManager
+	if not player_one_path.is_empty() and has_node(player_one_path):
+		_player_one = get_node(player_one_path) as CharacterController
+	if not player_two_path.is_empty() and has_node(player_two_path):
+		_player_two = get_node(player_two_path) as CharacterController
+	if not round_manager_path.is_empty() and has_node(round_manager_path):
+		_round_manager = get_node(round_manager_path) as RoundManager
 
-	if GameManager.instance != null and GameManager.instance.selected_player_one_character != null:
+	if GameManager.instance != null and GameManager.instance.selected_player_one_character != null and _player_one != null:
 		_player_one = _replace_or_init_character(GameManager.instance.selected_player_one_character, _player_one, false)
 
-	if GameManager.instance != null and GameManager.instance.selected_player_two_character != null:
+	if _player_two != null and GameManager.instance != null and GameManager.instance.selected_player_two_character != null:
 		_player_two = _replace_or_init_character(GameManager.instance.selected_player_two_character, _player_two, true)
 
-	_player_one.set_opponent(_player_two)
-	_player_two.set_opponent(_player_one)
+	if _player_one != null and _player_two != null:
+		_player_one.set_opponent(_player_two)
+		_player_two.set_opponent(_player_one)
 
 	var camera = get_node_or_null("../BattleCamera") as BattleCamera
-	if camera != null: camera.update_fighter_references(_player_one, _player_two)
+	if camera != null and _player_one != null:
+		camera.update_fighter_references(_player_one, _player_two)
 
 	var ui = get_node_or_null("../UI/BattleUI") as BattleUI
-	if ui != null: ui.update_fighter_references(_player_one, _player_two)
+	if ui != null and _player_one != null:
+		ui.update_fighter_references(_player_one, _player_two)
 
-	_player_one.combo.combo_ended.connect(func(combo): _player_one_highest_combo = maxi(_player_one_highest_combo, combo))
-	_player_two.combo.combo_ended.connect(func(combo): _player_two_highest_combo = maxi(_player_two_highest_combo, combo))
+	if _player_one != null:
+		_player_one.combo.combo_ended.connect(func(combo): _player_one_highest_combo = maxi(_player_one_highest_combo, combo))
+	if _player_two != null:
+		_player_two.combo.combo_ended.connect(func(combo): _player_two_highest_combo = maxi(_player_two_highest_combo, combo))
 
-	_round_manager.setup(_player_one, _player_two)
-	_round_manager.round_ended.connect(_on_round_ended)
+	if _round_manager != null and _player_one != null:
+		_round_manager.setup(_player_one, _player_two)
+		_round_manager.round_ended.connect(_on_round_ended)
 
 	_start_next_round()
 

@@ -158,8 +158,8 @@ func _reset_sequential_progress() -> void:
 		_progress[move] = 0
 	_sequence_time_remaining = 0.0
 
-func _add_moves_from_set(set: ComboMoveSet) -> void:
-	for move in set.moves:
+func _add_moves_from_set(move_set: ComboMoveSet) -> void:
+	for move in move_set.moves:
 		if move != null and not _moves.has(move):
 			_moves.append(move)
 

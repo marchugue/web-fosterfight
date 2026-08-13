@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://orb_projectile_scene_001"]
+
+[ext_resource type="Script" path="res://Scripts/SinglePlayer/SinglePlayerOrbProjectile.gd" id="1_script"]
+[ext_resource type="SpriteFrames" uid="uid://orb_proj_frames_001" path="res://Assets/Animations/mobs/orb_projectile_frames.tres" id="2_frames"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 16.0
+
+[node name="SinglePlayerOrbProjectile" type="Area2D"]
+collision_layer = 16
+collision_mask = 6
+script = ExtResource("1_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_frames")
+animation = &"moving"
+autoplay = "moving"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1")

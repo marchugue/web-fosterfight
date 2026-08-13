@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://blrgdcbcj5go7"]
+
+[ext_resource type="Script" uid="uid://lvmjns4jkqca" path="res://Scripts/SinglePlayer/MobController.gd" id="1_ctrl"]
+[ext_resource type="Resource" uid="uid://x5viaemgjcek" path="res://Resources/SinglePlayer/mob_wave3_orb_caster.tres" id="2_res"]
+[ext_resource type="SpriteFrames" uid="uid://di4tdna6glecj" path="res://Assets/Animations/mobs/mob2.tres" id="3_frames"]
+[ext_resource type="Script" uid="uid://btdj280lpy8nw" path="res://Scripts/Character/CharacterMovement.gd" id="4_mov"]
+[ext_resource type="Script" uid="uid://b6sc16o8fljgn" path="res://Scripts/SinglePlayer/SinglePlayerCombat.gd" id="5_cmbt"]
+[ext_resource type="Script" uid="uid://ct1t07ab563k5" path="res://Scripts/SinglePlayer/SinglePlayerAnimation.gd" id="6_anim"]
+[ext_resource type="Script" uid="uid://jaonu3wk28tq" path="res://Scripts/Character/CharacterHealth.gd" id="7_hp"]
+[ext_resource type="Script" uid="uid://cv2jnujkqge67" path="res://Scripts/Character/CharacterEnergy.gd" id="8_nrg"]
+[ext_resource type="Script" uid="uid://v7pesnl6aani" path="res://Scripts/Character/CharacterCombo.gd" id="9_combo"]
+[ext_resource type="Script" uid="uid://y2e7k5dh0qys" path="res://Scripts/Character/CommandComboSystem.gd" id="10_cmd"]
+[ext_resource type="Script" uid="uid://w02mvpp3k4wt" path="res://Scripts/Character/DashTrail.gd" id="11_trail"]
+
+[sub_resource type="CapsuleShape2D" id="BodyShape"]
+height = 45.0
+
+[sub_resource type="RectangleShape2D" id="HurtboxShape"]
+size = Vector2(24, 45)
+
+[sub_resource type="RectangleShape2D" id="HitboxShape"]
+size = Vector2(50, 74)
+
+[node name="SinglePlayerMob3" type="CharacterBody2D" unique_id=987654360]
+collision_layer = 2
+script = ExtResource("1_ctrl")
+entity_data = ExtResource("2_res")
+mob_movement_speed = 90.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=987654361]
+position = Vector2(0, 7)
+shape = SubResource("BodyShape")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=987654362]
+position = Vector2(0, -21)
+sprite_frames = ExtResource("3_frames")
+animation = &"attack_2"
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=987654363]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=987654364]
+position = Vector2(0, 7)
+shape = SubResource("HurtboxShape")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=987654365]
+position = Vector2(25, -20)
+collision_layer = 0
+collision_mask = 4
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=987654366]
+position = Vector2(0, 12)
+shape = SubResource("HitboxShape")
+
+[node name="CharacterMovement" type="Node" parent="." unique_id=987654367]
+script = ExtResource("4_mov")
+
+[node name="CharacterCombat" type="Node" parent="." unique_id=987654368]
+script = ExtResource("5_cmbt")
+
+[node name="HitboxAnimator" type="AnimationPlayer" parent="." unique_id=987654369]
+callback_mode_process = 2
+
+[node name="CharacterAnimation" type="Node" parent="." unique_id=987654370]
+script = ExtResource("6_anim")
+sprite_path = NodePath("../Sprite")
+
+[node name="CharacterHealth" type="Node" parent="." unique_id=987654371]
+script = ExtResource("7_hp")
+
+[node name="CharacterEnergy" type="Node" parent="." unique_id=987654372]
+script = ExtResource("8_nrg")
+
+[node name="CharacterCombo" type="Node" parent="." unique_id=987654373]
+script = ExtResource("9_combo")
+
+[node name="CommandComboSystem" type="Node" parent="." unique_id=987654374]
+script = ExtResource("10_cmd")
+
+[node name="DashTrail" type="Node" parent="." unique_id=987654375]
+script = ExtResource("11_trail")

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SinglePlayerAttackData" format=3 uid="uid://db4f2o48jp23c"]
+
+[ext_resource type="Script" uid="uid://b32vi0y23eghm" path="res://Scripts/SinglePlayer/SinglePlayerAttackData.gd" id="1_attack"]
+[ext_resource type="SpriteFrames" uid="uid://vrcpjiglpyku" path="res://Assets/Animations/singlecharacter/archer.tres" id="2_frames"]
+
+[resource]
+script = ExtResource("1_attack")
+attack_name = "Light Melee"
+damage = 30.0
+character_animation = "close_attack"
+character_sprite_frames = ExtResource("2_frames")
+hit_frames = Array[int]([4, 5, 6])
+is_uninterruptable = true

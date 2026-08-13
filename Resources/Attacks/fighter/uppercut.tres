@@ -19,6 +19,5 @@ knockback = 320.0
 hitstun = 0.55
 launch_force = Vector2(250, -150)
 effect = 4
-cooldown = 0.7
-energy_cost = 25.0
+cooldown = 3.0
 energy_gained_on_hit = 0.0

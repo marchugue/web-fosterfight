@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://bqyg64fagppkr"]
+
+[ext_resource type="Script" uid="uid://b1ue3r540cj4x" path="res://Scripts/Character/CharacterData.gd" id="1_script"]
+[ext_resource type="Resource" uid="uid://hlbqvgp1d6va" path="res://Resources/Attacks/single_player/level1/sp_bow_shot.tres" id="1_sn0e3"]
+[ext_resource type="Resource" uid="uid://blwdnqkge4pqu" path="res://Resources/Attacks/single_player/sp_laser_beam.tres" id="2_nod0s"]
+[ext_resource type="Resource" uid="uid://ca2vtocdojo57" path="res://Resources/Attacks/single_player/sp_spell_burst.tres" id="3_6m7vl"]
+[ext_resource type="SpriteFrames" uid="uid://vrcpjiglpyku" path="res://Assets/Animations/singlecharacter/archer.tres" id="4_ph5l4"]
+
+[resource]
+script = ExtResource("1_script")
+display_name = "SinglePlayer Fighter"
+id = "sp1"
+scene_path = "res://Scenes/Components/characters/SinglePlayerCharacter.tscn"
+move_speed = 230.0
+attack1_data = ExtResource("1_sn0e3")
+attack2_data = ExtResource("2_nod0s")
+attack3_data = ExtResource("3_6m7vl")
+frames = ExtResource("4_ph5l4")
+animation_names = {
+"attack1": "attack_1",
+"attack1_1": "attack_1",
+"attack1_2": "attack_2",
+"attack1_3": "attack_3",
+"attack2": "attack_2",
+"attack3": "attack_3",
+"dead": "dead",
+"hurt": "hurt",
+"idle": "idle",
+"jump": "jump",
+"run": "run",
+"walk": "walk"
+}

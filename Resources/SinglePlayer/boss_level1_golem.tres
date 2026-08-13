@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="SinglePlayerEntityData" format=3 uid="uid://cl7bpiqvylup2"]
+
+[ext_resource type="Script" uid="uid://b32vi0y23eghm" path="res://Scripts/SinglePlayer/SinglePlayerAttackData.gd" id="1_d20ey"]
+[ext_resource type="Script" uid="uid://cc63ogi6ai85b" path="res://Scripts/SinglePlayer/SinglePlayerEntityData.gd" id="1_script"]
+[ext_resource type="Resource" uid="uid://dualsus1n33ss" path="res://Resources/Attacks/single_player/level1/sp_boss_slam.tres" id="2_d20ey"]
+[ext_resource type="Resource" uid="uid://bhvqp2gca8xhs" path="res://Resources/Attacks/single_player/level1/sp_boss_cast_spell.tres" id="3_cast"]
+[ext_resource type="SpriteFrames" uid="uid://8tr5obiaupey" path="res://Assets/Animations/mobs/mob4.tres" id="5_d20ey"]
+
+[resource]
+script = ExtResource("1_script")
+display_name = "Ancient Rock Golem"
+entity_type = 2
+max_health = 1800.0
+attack_damage_multiplier = 1.4
+attack_speed_multiplier = 0.82
+movement_speed = 78.0
+jump_force = 550.0
+is_flying = true
+attack_range = 120.0
+sprite_frames = ExtResource("5_d20ey")
+scale_multiplier = 1.85
+attacks = Array[ExtResource("1_d20ey")]([ExtResource("2_d20ey"), ExtResource("3_cast")])

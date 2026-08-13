@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SinglePlayerAttackData" format=3 uid="uid://sp_mob4_short_atk"]
+
+[ext_resource type="Script" uid="uid://b32vi0y23eghm" path="res://Scripts/SinglePlayer/SinglePlayerAttackData.gd" id="1_attack"]
+
+[resource]
+script = ExtResource("1_attack")
+attack_name = "Shadow Slash"
+delivery_type = 0
+damage = 35.0
+knockback = 120.0
+character_animation = "attack"
+hit_frames = Array[int]([6, 7, 8])
+recovery_frames = 10
+melee_range = 95.0

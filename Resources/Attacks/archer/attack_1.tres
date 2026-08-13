@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://dp3d1x5ue2bcf"]
+
+[ext_resource type="SpriteFrames" uid="uid://vrcpjiglpyku" path="res://Assets/Animations/singlecharacter/archer.tres" id="1_f13oa"]
+[ext_resource type="Script" uid="uid://1jn6asbjrouu" path="res://Scripts/Character/AttackData.gd" id="2_f13oa"]
+[ext_resource type="AudioStream" uid="uid://cn3utbgvc711h" path="res://Assets/mobs/main character/bow_1.mp3" id="3_h4lhr"]
+
+[resource]
+script = ExtResource("2_f13oa")
+type = 5
+sprite_animation_name = "attack_1"
+custom_sprite_frames = ExtResource("1_f13oa")
+attack_speed = 3.0
+hitbox_start_frame = 10
+hitbox_duration = 1
+sfx_on_swing = ExtResource("3_h4lhr")
+knockback = 0.0
+cooldown = 0.2
+allowed_cancel_targets = Array[int]([1, 2])

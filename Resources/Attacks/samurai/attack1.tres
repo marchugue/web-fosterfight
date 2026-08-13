@@ -13,6 +13,6 @@ sfx_on_start = ExtResource("3_hcdnd")
 damage = 35.0
 knockback = 100.0
 hitstun = 0.5
-cooldown = 0.45
+cooldown = 0.4
 can_cancel_after_hit = true
 allowed_cancel_targets = Array[int]([1, 2])

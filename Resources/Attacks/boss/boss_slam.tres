@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://boss_atk_slam_01"]
+
+[ext_resource type="Script" uid="uid://cb30j0jpx0a7u" path="res://Scripts/Character/AttackData.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+attack_name = "Boss Slam"
+character_id = ""
+type = 4
+sprite_animation_name = "heavy_attack"
+attack_speed = 0.9
+hitbox_start_frame = 3
+hitbox_duration = 4
+hitbox_offset = Vector2(0, 0)
+hitbox_scale_multiplier = Vector2(1.5, 1.5)
+damage = 80.0
+knockback = 300.0
+hitstun = 0.5
+launch_force = Vector2(100, -250)
+effect = 1
+cooldown = 2.0
+energy_cost = 0.0
+energy_gained_on_hit = 15.0
+can_cancel_after_hit = false
+allowed_cancel_targets = Array[int]([])
+light_attack_string_cancel = false
+string_steps = Array[ExtResource("1_script")]([])

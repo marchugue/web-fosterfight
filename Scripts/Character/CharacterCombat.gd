@@ -19,6 +19,7 @@ enum AttackInput {
 @export var attack1_data: AttackData
 @export var attack2_data: AttackData
 @export var attack3_data: AttackData
+@export var damage_multiplier: float = 1.0
 
 class HitboxTransformData extends RefCounted:
 	var area_position: Vector2 = Vector2.ZERO
@@ -211,12 +212,21 @@ func _begin_attack(input: AttackInput, atk_data: AttackData, animation_key: Stri
 	if atk_data.sfx_on_start != null:
 		attack_start_sfx.emit(atk_data.sfx_on_start)
 
+	# Safety fallback timer to prevent character freeze if animation signal is missed
+	var safe_timeout = (float(atk_data.hitbox_duration + 5) / 10.0) / maxf(0.1, atk_data.attack_speed) + 0.35
+	get_tree().create_timer(safe_timeout).timeout.connect(func():
+		if is_attacking:
+			_on_animation_finished()
+	, CONNECT_ONE_SHOT)
+
 func _on_sprite_frame_changed() -> void:
 	if not is_attacking or _current_attack_data == null or _sprite == null:
 		return
 
 	var frame = _sprite.frame
 	var should_be_active = _current_attack_data.is_hitbox_active_on_frame(frame)
+
+	_process_special_attack_frame(frame)
 
 	if should_be_active and not is_hitbox_active:
 		if not _swing_sfx_fired:
@@ -227,6 +237,11 @@ func _on_sprite_frame_changed() -> void:
 				attack_swing.emit(_current_attack_data.sfx_on_swing)
 
 	set_hitbox_active(should_be_active)
+
+func _process_special_attack_frame(_frame: int) -> void:
+	# Base 2-Player arcade combat does not execute single-player mob/special frame logic.
+	# SinglePlayerCombat extends this class to process Bow, Spell, and Laser attacks.
+	pass
 
 func _on_animation_finished() -> void:
 	if not is_attacking or _current_attack_data == null:
@@ -270,7 +285,7 @@ func check_hit(opponent_hurtbox: Area2D) -> void:
 
 	attack_hit.emit(
 		opponent_hurtbox,
-		_current_attack_data.damage,
+		_current_attack_data.damage * damage_multiplier,
 		_current_attack_data.knockback,
 		_current_attack_data.hitstun,
 		_current_attack_data.energy_gained_on_hit,

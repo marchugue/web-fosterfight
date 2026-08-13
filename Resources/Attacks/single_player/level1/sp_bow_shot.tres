@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="SinglePlayerAttackData" format=3 uid="uid://hlbqvgp1d6va"]
+
+[ext_resource type="Script" uid="uid://b32vi0y23eghm" path="res://Scripts/SinglePlayer/SinglePlayerAttackData.gd" id="1_attack"]
+[ext_resource type="Script" uid="uid://fhn8ppjaolk8" path="res://Scripts/SinglePlayer/SinglePlayerVfxConfig.gd" id="2_vfx_script"]
+[ext_resource type="PackedScene" uid="uid://oh8exth07vud" path="res://Scenes/Components/vfx/ArrowVFX.tscn" id="3_arrow_scene"]
+[ext_resource type="SpriteFrames" uid="uid://vrcpjiglpyku" path="res://Assets/Animations/singlecharacter/archer.tres" id="5_frames"]
+
+[sub_resource type="Resource" id="bow_vfx"]
+script = ExtResource("2_vfx_script")
+vfx_scene = ExtResource("3_arrow_scene")
+sprite_frames = ExtResource("5_frames")
+animation_name = "arrow"
+spawn_marker = "BowMuzzle"
+offset = Vector2(25, -15)
+
+[resource]
+script = ExtResource("1_attack")
+attack_name = "Bow Arrow Shot"
+delivery_type = 1
+damage = 45.0
+knockback = 40.0
+attack_speed = 1.2
+cooldown = 0.35
+character_sprite_frames = ExtResource("5_frames")
+activation_frame = 0
+vfx_spawn_frames = Array[int]([10])
+hit_frames = Array[int]([10])
+recovery_frames = 3
+vfx_config = SubResource("bow_vfx")
+is_uninterruptable = true

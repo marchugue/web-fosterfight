@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MobData" format=3 uid="uid://blkmw652mvw70"]
+
+[ext_resource type="Script" uid="uid://b32vi0y23eghm" path="res://Scripts/SinglePlayer/SinglePlayerAttackData.gd" id="1_5iib2"]
+[ext_resource type="Script" uid="uid://6sf1cj7plnav" path="res://Scripts/SinglePlayer/MobData.gd" id="2_3kf8f"]
+[ext_resource type="SpriteFrames" uid="uid://chpp8pfqubfvx" path="res://Assets/Animations/mobs/mob3.tres" id="2_l3fsm"]
+
+[resource]
+script = ExtResource("2_3kf8f")
+mob_sprite_frames = ExtResource("2_l3fsm")

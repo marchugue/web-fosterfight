@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://bh15cg1a6fk07"]
+
+[ext_resource type="Script" uid="uid://nvko6m201bk3" path="res://Scripts/SinglePlayer/SinglePlayerWaveHUD.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://dsaw4nnen6a2j" path="res://Assets/Fonts/Press_Start_2P/PressStart2P-Regular.ttf" id="2_font"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_top_panel"]
+
+[node name="SinglePlayerWaveHUD" type="Control" unique_id=321698764]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_script")
+
+[node name="TopPanel" type="PanelContainer" parent="." unique_id=870311010]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 12.0
+offset_right = 860.0
+offset_bottom = 92.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_top_panel")
+
+[node name="VBox" type="VBoxContainer" parent="TopPanel" unique_id=1328237043]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="WaveLabel" type="Label" parent="TopPanel/VBox" unique_id=303485385]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.92, 0.35, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "WAVE 1 / 4"
+horizontal_alignment = 1
+
+[node name="EnemiesLabel" type="Label" parent="TopPanel/VBox" unique_id=1962128282]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 1, 0.85, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "ENEMIES LEFT: 0"
+horizontal_alignment = 1
+
+[node name="PlayerHealthLabel" type="Label" parent="." unique_id=2125464316]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 260.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0.55, 0.95, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 12
+text = "HP: 1000 / 1000"

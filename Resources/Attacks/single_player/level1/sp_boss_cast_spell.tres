@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="SinglePlayerAttackData" format=3 uid="uid://bhvqp2gca8xhs"]
+
+[ext_resource type="Script" uid="uid://b32vi0y23eghm" path="res://Scripts/SinglePlayer/SinglePlayerAttackData.gd" id="1_attack"]
+[ext_resource type="Script" uid="uid://fhn8ppjaolk8" path="res://Scripts/SinglePlayer/SinglePlayerVfxConfig.gd" id="2_vfx_script"]
+[ext_resource type="PackedScene" uid="uid://86mlh78fcdvh" path="res://Scenes/Components/vfx/SpellVFX.tscn" id="3_spell_scene"]
+
+[sub_resource type="Resource" id="boss_spell_vfx"]
+script = ExtResource("2_vfx_script")
+vfx_scene = ExtResource("3_spell_scene")
+tint = Color(1, 0.35, 0.15, 0.9)
+
+[resource]
+script = ExtResource("1_attack")
+attack_name = "Golem Ground Burst"
+delivery_type = 3
+damage = 48.0
+knockback = 180.0
+attack_speed = 0.85
+character_animation = "cast"
+activation_frame = 4
+vfx_spawn_frames = Array[int]([6])
+hit_frames = Array[int]([6])
+recovery_frames = 4
+vfx_config = SubResource("boss_spell_vfx")
+melee_range = 420.0
+aoe_radius = 95.0
+aoe_targets_player_position = true
+aoe_impact_delay = 0.8
+is_uninterruptable = true

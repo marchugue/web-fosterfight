@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MobData" format=3 uid="uid://dc3uivbekc5h3"]
+
+[ext_resource type="Script" uid="uid://b32vi0y23eghm" path="res://Scripts/SinglePlayer/SinglePlayerAttackData.gd" id="1_6toam"]
+[ext_resource type="Script" uid="uid://6sf1cj7plnav" path="res://Scripts/SinglePlayer/MobData.gd" id="2_ixkuf"]
+[ext_resource type="SpriteFrames" uid="uid://di4tdna6glecj" path="res://Assets/Animations/mobs/mob2.tres" id="2_xpswr"]
+
+[resource]
+script = ExtResource("2_ixkuf")
+mob_name = "knight"
+mob_sprite_frames = ExtResource("2_xpswr")

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SinglePlayerAttackData" format=3 uid="uid://dualsus1n33ss"]
+
+[ext_resource type="Script" uid="uid://b32vi0y23eghm" path="res://Scripts/SinglePlayer/SinglePlayerAttackData.gd" id="1_attack"]
+
+[resource]
+script = ExtResource("1_attack")
+attack_name = "Boss Heavy Slam"
+damage = 55.0
+knockback = 220.0
+attack_speed = 0.85
+character_animation = "attack"
+activation_frame = 7
+vfx_spawn_frames = Array[int]([5])
+hit_frames = Array[int]([5, 6, 7, 8, 9, 10])
+recovery_frames = 16
+melee_range = 110.0

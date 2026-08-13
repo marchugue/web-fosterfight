@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cwdvebl8xj4ge"]
+
+[ext_resource type="Script" uid="uid://cex2l8bsup4il" path="res://Scripts/VFX/LaserVFX.gd" id="1_script"]
+[ext_resource type="SpriteFrames" uid="uid://vrcpjiglpyku" path="res://Assets/Animations/singlecharacter/archer.tres" id="2_ctw8c"]
+
+[node name="LaserVFX" type="Node2D" unique_id=987301]
+script = ExtResource("1_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=987304]
+sprite_frames = ExtResource("2_ctw8c")
+animation = &"vfx3"
+speed_scale = 2.0
+offset = Vector2(128, 0)

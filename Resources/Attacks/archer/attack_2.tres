@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://wepbscbr1xjt"]
+
+[ext_resource type="SpriteFrames" uid="uid://ed0eha42j44p" path="res://Assets/Animations/character4/v1.tres" id="1_t7ho1"]
+[ext_resource type="Script" uid="uid://1jn6asbjrouu" path="res://Scripts/Character/AttackData.gd" id="2_b1bfw"]
+
+[resource]
+script = ExtResource("2_b1bfw")
+sprite_animation_name = "attack_1"
+custom_sprite_frames = ExtResource("1_t7ho1")
+damage = 80.0
+knockback = 80.0
+hitstun = 1.5
+launch_force = Vector2(0, -100)
+effect = 2
+cooldown = 1.0
+can_cancel_after_hit = true
+allowed_cancel_targets = Array[int]([2])

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SinglePlayerAttackData" format=3 uid="uid://sp_mob4_aoe_cast"]
+
+[ext_resource type="Script" uid="uid://b32vi0y23eghm" path="res://Scripts/SinglePlayer/SinglePlayerAttackData.gd" id="1_attack"]
+
+[resource]
+script = ExtResource("1_attack")
+attack_name = "Void Blast"
+delivery_type = 1
+damage = 45.0
+knockback = 140.0
+character_animation = "cast"
+vfx_spawn_frames = Array[int]([6])
+hit_frames = Array[int]([6])
+recovery_frames = 12
+melee_range = 380.0
+projectile_speed = 380.0

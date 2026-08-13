@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SinglePlayerLevelData" format=3]
+
+[ext_resource type="Script" path="res://Scripts/SinglePlayer/SinglePlayerLevelData.gd" id="1_script"]
+[ext_resource type="Resource" uid="uid://cui35tcnc05be" path="res://Resources/SinglePlayer/mob_level1_goblin.tres" id="2_mob"]
+[ext_resource type="Resource" uid="uid://cl7bpiqvylup2" path="res://Resources/SinglePlayer/boss_level1_golem.tres" id="3_boss"]
+
+[resource]
+script = ExtResource("1_script")
+level_id = "level3"
+level_name = "Throne of Chaos"
+assigned_mob = ExtResource("2_mob")
+assigned_boss = ExtResource("3_boss")
+wave_1_count = 3
+wave_2_count = 4
+wave_2_stat_multiplier = 1.55
+next_level_scene_path = ""

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://rb8xsvtuvc63"]
 
-[ext_resource type="Script" uid="uid://bqyqhb534vqa0" path="res://Scripts/UI/ProgramSelectUI.gd" id="1"]
+[ext_resource type="Script" uid="uid://bs4s1xhar6ffh" path="res://Scripts/UI/ProgramSelectUI.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://bwkte5mmpja27" path="res://Scenes/Components/AnimatedButton.tscn" id="2"]
 [ext_resource type="FontFile" uid="uid://dsaw4nnen6a2j" path="res://Assets/Fonts/Press_Start_2P/PressStart2P-Regular.ttf" id="2_14gbr"]
 [ext_resource type="Texture2D" uid="uid://dlnstgl02y02n" path="res://Assets/Sprites/UI/Programselect/image 237.png" id="2_m4aw0"]

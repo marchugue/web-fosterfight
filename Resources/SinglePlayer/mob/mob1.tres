@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MobData" format=3 uid="uid://u7xtcc2d7a2r"]
+
+[ext_resource type="Script" uid="uid://b32vi0y23eghm" path="res://Scripts/SinglePlayer/SinglePlayerAttackData.gd" id="1_gd2qf"]
+[ext_resource type="SpriteFrames" uid="uid://bmhyg4w3s11yc" path="res://Assets/Animations/mobs/mob1.tres" id="2_ugv6j"]
+[ext_resource type="Script" uid="uid://6sf1cj7plnav" path="res://Scripts/SinglePlayer/MobData.gd" id="2_uv2kf"]
+
+[resource]
+script = ExtResource("2_uv2kf")
+mob_name = "bat"
+mob_sprite_frames = ExtResource("2_ugv6j")
+is_flying_mob = true

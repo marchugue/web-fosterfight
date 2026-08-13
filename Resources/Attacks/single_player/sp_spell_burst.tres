@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="SinglePlayerAttackData" format=3 uid="uid://ca2vtocdojo57"]
+
+[ext_resource type="Script" uid="uid://b32vi0y23eghm" path="res://Scripts/SinglePlayer/SinglePlayerAttackData.gd" id="1_attack"]
+[ext_resource type="Script" uid="uid://fhn8ppjaolk8" path="res://Scripts/SinglePlayer/SinglePlayerVfxConfig.gd" id="2_vfx_script"]
+[ext_resource type="PackedScene" uid="uid://86mlh78fcdvh" path="res://Scenes/Components/vfx/SpellVFX.tscn" id="3_spell_scene"]
+[ext_resource type="SpriteFrames" uid="uid://vrcpjiglpyku" path="res://Assets/Animations/singlecharacter/archer.tres" id="5_frames"]
+
+[sub_resource type="Resource" id="spell_vfx"]
+script = ExtResource("2_vfx_script")
+vfx_scene = ExtResource("3_spell_scene")
+sprite_frames = ExtResource("5_frames")
+animation_name = "vfx2"
+spawn_marker = "SpellCast"
+tint = Color(0.7, 0.25, 1, 0.85)
+
+[resource]
+script = ExtResource("1_attack")
+attack_name = "Spell Target Burst"
+delivery_type = 3
+damage = 150.0
+knockback = 260.0
+cooldown = 3.8
+character_animation = "attack_3"
+character_sprite_frames = ExtResource("5_frames")
+activation_frame = null
+vfx_spawn_frames = Array[int]([9])
+hit_frames = Array[int]([9])
+recovery_frames = 5
+vfx_config = SubResource("spell_vfx")
+aoe_radius = 105.0
+aoe_vfx_scale = 1.5
+aoe_prioritize_clusters = true
+is_uninterruptable = true

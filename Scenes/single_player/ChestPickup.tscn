@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://crpe0t8hpgegn"]
+
+[ext_resource type="Script" uid="uid://c344p20urkje6" path="res://Scripts/SinglePlayer/ChestPickup.gd" id="1_chest"]
+[ext_resource type="Texture2D" uid="uid://cwejq8pp24hhu" path="res://Assets/Sprites/UI/battleHUD/Tiles 2.png" id="2_86mk2"]
+[ext_resource type="Texture2D" uid="uid://dvh64fa66rrcd" path="res://Assets/Sprites/UI/battleHUD/Tiles 3.png" id="3_ao6cr"]
+
+[sub_resource type="CircleShape2D" id="ProximityShape"]
+radius = 90.0
+
+[node name="ChestPickup" type="Area2D" unique_id=1885649867]
+z_index = 1
+scale = Vector2(0.01, 0.01)
+collision_layer = 0
+monitorable = false
+script = ExtResource("1_chest")
+chest_closed_texture = ExtResource("2_86mk2")
+chest_open_texture = ExtResource("3_ao6cr")
+
+[node name="ProximityCollision" type="CollisionShape2D" parent="." unique_id=704621901]
+shape = SubResource("ProximityShape")

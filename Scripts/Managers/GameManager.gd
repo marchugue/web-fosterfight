@@ -63,6 +63,7 @@ func go_to_character_select() -> void: change_scene(Constants.Scenes.CHARACTER_S
 func go_to_battle() -> void: change_scene(Constants.Scenes.BATTLE)
 func go_to_result() -> void: change_scene(Constants.Scenes.RESULT)
 func go_to_leaderboard() -> void: change_scene(Constants.Scenes.LEADERBOARD)
+func go_to_single_player() -> void: change_scene(Constants.Scenes.SINGLE_PLAYER_LEVEL1)
 
 func change_scene(path: String) -> void:
 	var error = get_tree().change_scene_to_file(path)

@@ -21,8 +21,8 @@ func setup(player_one: CharacterController, player_two: CharacterController) -> 
 	_player_one = player_one
 	_player_two = player_two
 
-	_player_one.round_loss.connect(_on_fighter_knocked_out)
-	_player_two.round_loss.connect(_on_fighter_knocked_out)
+	if _player_one != null: _player_one.round_loss.connect(_on_fighter_knocked_out)
+	if _player_two != null: _player_two.round_loss.connect(_on_fighter_knocked_out)
 
 func prepare_round() -> void:
 	_time_remaining = round_time_seconds
@@ -43,16 +43,16 @@ func prepare_round() -> void:
 	set_input_locked(true)
 
 func play_intro_sequence(round_number: int, player_one_wins: int, player_two_wins: int) -> void:
-	if _player_one == null or _player_two == null or _intro_running:
+	if _player_one == null or _intro_running:
 		return
 
 	_intro_running = true
 	round_intro_started.emit(round_number, player_one_wins, player_two_wins)
 
-	if round_number <= 1:
-		_play_match_intro_sequence()
-	else:
+	if _player_two == null or round_number > 1:
 		_play_round_overlay_only()
+	else:
+		_play_match_intro_sequence()
 
 func _play_match_intro_sequence() -> void:
 	if AudioManager.instance != null: AudioManager.instance.play_round_intro_sfx()

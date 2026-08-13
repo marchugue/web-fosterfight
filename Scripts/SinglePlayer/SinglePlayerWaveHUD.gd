@@ -85,6 +85,7 @@ func quit_game() -> void:
 		get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 
 func show_defeat_screen(wave_reached: int = 1, max_waves: int = 7) -> void:
+	get_tree().paused = true
 	if _defeat_panel == null:
 		return
 	var wave_info_lbl = _defeat_panel.get_node_or_null("%DefeatWaveLabel") as Label
@@ -149,7 +150,7 @@ func _build_defeat_ui() -> void:
 	margin.add_child(vbox)
 
 	var title = Label.new()
-	title.text = "YOU DIED"
+	title.text = "GAME OVER"
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.add_theme_font_size_override("font_size", 34)
 	title.add_theme_color_override("font_color", Color(1.0, 0.25, 0.25))

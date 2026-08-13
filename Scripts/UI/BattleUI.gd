@@ -318,12 +318,17 @@ func quit_game() -> void:
 	if GameManager.instance != null:
 		GameManager.instance.go_to_main_menu()
 
-func show_defeat_screen(wave_reached: int = 1, max_waves: int = 7) -> void:
+func show_defeat_screen(_wave_reached: int = 1, _max_waves: int = 7) -> void:
+	get_tree().paused = true
 	if _pause_panel != null:
 		_pause_panel.visible = true
+		var title_lbl = _pause_panel.get_node_or_null("%PauseTitleLabel") as Label
+		if title_lbl != null:
+			title_lbl.text = "GAME OVER"
 		if _resume_button != null:
 			_resume_button.visible = false
 		if _retry_button != null:
+			_retry_button.visible = true
 			_retry_button.grab_focus()
 	else:
 		retry_game()

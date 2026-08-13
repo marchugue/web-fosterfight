@@ -40,6 +40,15 @@ func _ready() -> void:
 	instance = self
 	Input.joy_connection_changed.connect(_on_joy_connection_changed)
 
+	call_deferred("_auto_detect_joypads")
+
+func _auto_detect_joypads() -> void:
+	var connected_joys = Input.get_connected_joypads()
+	if not connected_joys.is_empty():
+		assign_device(0, connected_joys[0])
+		if connected_joys.size() > 1:
+			assign_device(1, connected_joys[1])
+
 func assign_device(player_index: int, device_id: int) -> void:
 	var actions = _p1_actions if player_index == 0 else _p2_actions
 	_remove_joypad_events(actions)

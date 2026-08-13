@@ -26,6 +26,7 @@ GameManager="*res://Scripts/Managers/GameManager.gd"
 AudioManager="*res://Scripts/Managers/AudioManager.gd"
 LeaderboardManager="*res://Scripts/Managers/LeaderboardManager.gd"
 ControllerManager="*res://Scripts/Utilities/ControllerManager.gd"
+GameConsole="*res://Scripts/Utilities/GameConsole.gd"
 
 [display]
 

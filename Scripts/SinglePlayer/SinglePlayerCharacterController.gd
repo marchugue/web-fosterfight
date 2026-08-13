@@ -45,7 +45,7 @@ var data: CharacterData:
 @export_group("Single-Player Stats Override")
 @export var mob_max_health: float = 1000.0
 @export var attack_damage: float = 1.0
-@export var attack_speed: float = 1.0
+@export var attack_speed: float = 1.5
 @export var movement_speed: float = 240.0
 @export var jump_force: float = 520.0
 @export var is_flying: bool = false

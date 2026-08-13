@@ -11,6 +11,7 @@ script = ExtResource("1_script")
 character_id = "sp_archer"
 display_name = "SinglePlayer Archer"
 move_speed = 245.0
+attack_speed_multiplier = 1.5
 sprite_frames = ExtResource("5_frames")
 attack1_data = ExtResource("2_bow")
 attack2_data = ExtResource("3_laser")

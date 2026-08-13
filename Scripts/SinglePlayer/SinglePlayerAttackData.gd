@@ -24,7 +24,7 @@ enum DeliveryType {
 @export var delivery_type: DeliveryType = DeliveryType.MELEE
 @export var damage: float = 40.0
 @export var knockback: float = 120.0
-@export var attack_speed: float = 1.0
+@export var attack_speed: float = 1.5
 @export var cooldown: float = 0.5
 
 # ── 2 · Character Animation ─────────────────────────────────────────────────

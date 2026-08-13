@@ -11,7 +11,7 @@ extends Resource
 @export var move_speed: float = 230.0
 @export var jump_force: float = 520.0
 @export var attack_damage_multiplier: float = 1.0
-@export var attack_speed_multiplier: float = 1.0
+@export var attack_speed_multiplier: float = 1.5
 
 @export_group("Visuals")
 @export var sprite_frames: SpriteFrames

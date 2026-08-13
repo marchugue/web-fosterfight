@@ -1,7 +1,6 @@
-class_name GameConsole
 extends CanvasLayer
 
-static var instance: GameConsole = null
+static var instance = null
 
 var is_console_open: bool = false
 var god_mode: bool = false

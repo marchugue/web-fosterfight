@@ -10,7 +10,7 @@
 [resource]
 script = ExtResource("1_script")
 display_name = "Shadow Warrior"
-max_health = 600.0
+max_health = 280.0
 movement_speed = 84.0
 jump_force = 500.0
 attack_range = 95.0

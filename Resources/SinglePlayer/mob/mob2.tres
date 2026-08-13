@@ -7,4 +7,5 @@
 [resource]
 script = ExtResource("2_ixkuf")
 mob_name = "knight"
+mob_health = 280.0
 mob_sprite_frames = ExtResource("2_xpswr")

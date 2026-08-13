@@ -26,7 +26,7 @@ size = Vector2(40, 50)
 collision_layer = 2
 script = ExtResource("1_omns4")
 entity_data = ExtResource("2_b5dhq")
-mob_health = 640.0
+mob_health = 280.0
 mob_attack_damage = 0.96
 mob_movement_speed = 144.0
 

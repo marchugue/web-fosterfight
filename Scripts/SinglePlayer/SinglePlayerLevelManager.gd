@@ -35,6 +35,7 @@ var _current_wave_stat_mult: float = 1.0
 var _spawn_check_timer: float = 0.0
 var _is_transitioning_wave: bool = false
 var _level_elapsed_time: float = 0.0
+var _wave_elapsed_timer: float = 0.0
 
 func _ready() -> void:
 	call_deferred("_setup_level")
@@ -44,6 +45,7 @@ func _process(delta: float) -> void:
 		return
 
 	_level_elapsed_time += delta
+	_wave_elapsed_timer += delta
 
 	_spawn_check_timer += delta
 	if _spawn_check_timer < 0.35:
@@ -130,6 +132,7 @@ func _start_wave(wave_num: int) -> void:
 
 	_is_transitioning_wave = false
 	current_wave = wave_num
+	_wave_elapsed_timer = 0.0
 	active_mobs.clear()
 	_spawn_queue.clear()
 	var is_boss_wave = (current_wave == total_waves)
@@ -255,24 +258,48 @@ func _get_spawn_position_for_mob(mob_res: SinglePlayerEntityData) -> Vector2:
 		else:
 			generic_positions.append(m.global_position)
 
-	var selected_pos = Vector2(500, 300)
-
+	var candidates: Array[Vector2] = []
 	if not specific_positions.is_empty():
-		selected_pos = specific_positions.pick_random()
+		candidates = specific_positions
 	elif not generic_positions.is_empty():
-		selected_pos = generic_positions.pick_random()
+		candidates = generic_positions
 	elif level_data != null and not level_data.spawn_positions.is_empty():
 		var tres_positions = level_data.spawn_positions
-		var filtered: Array[Vector2] = []
 		for pos in tres_positions:
 			if is_flying and pos.y <= 300.0:
-				filtered.append(pos)
+				candidates.append(pos)
 			elif not is_flying and pos.y > 300.0:
-				filtered.append(pos)
-		if not filtered.is_empty():
-			selected_pos = filtered.pick_random()
+				candidates.append(pos)
+		if candidates.is_empty():
+			candidates = tres_positions.duplicate()
+
+	var selected_pos = Vector2(500, 300)
+
+	if not candidates.is_empty():
+		# Avoid spawning near player for the first 5 seconds of the round:
+		if _player != null and is_instance_valid(_player) and _wave_elapsed_timer < 5.0:
+			var player_pos = _player.global_position
+			var min_safe_distance: float = 320.0
+
+			var far_candidates = candidates.filter(func(pos: Vector2):
+				return pos.distance_to(player_pos) >= min_safe_distance
+			)
+
+			if not far_candidates.is_empty():
+				selected_pos = far_candidates.pick_random()
+			else:
+				# If all spawn points are within min_safe_distance, select the candidate furthest away from the player:
+				var furthest_pos = candidates[0]
+				var max_d = candidates[0].distance_to(player_pos)
+				for c_pos in candidates:
+					var dist = c_pos.distance_to(player_pos)
+					if dist > max_d:
+						max_d = dist
+						furthest_pos = c_pos
+				selected_pos = furthest_pos
 		else:
-			selected_pos = tres_positions.pick_random()
+			# After 5 seconds, or if no player, spawn normally at any candidate spawn point
+			selected_pos = candidates.pick_random()
 
 	var offset_x = randf_range(-60.0, 60.0)
 	var offset_y = randf_range(-30.0, 20.0) if is_flying else 0.0

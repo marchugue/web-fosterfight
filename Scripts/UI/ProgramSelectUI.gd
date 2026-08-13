@@ -20,11 +20,13 @@ func _ready() -> void:
 
 func _on_versus_pressed() -> void:
 	if GameManager.instance != null:
+		GameManager.instance.is_single_player_mode = false
 		GameManager.instance.go_to_name_entry()
 
 func _on_cpu_pressed() -> void:
 	if GameManager.instance != null:
-		GameManager.instance.go_to_single_player()
+		GameManager.instance.is_single_player_mode = true
+		GameManager.instance.go_to_name_entry()
 
 func _on_back_pressed() -> void:
 	if GameManager.instance != null:

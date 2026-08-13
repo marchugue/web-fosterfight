@@ -8,6 +8,7 @@ var settings: GameSettingsData = GameSettingsData.new()
 
 var player_one_name: String = "Player 1"
 var player_two_name: String = "Player 2"
+var is_single_player_mode: bool = false
 
 var selected_player_one_character: CharacterData
 var selected_player_two_character: CharacterData

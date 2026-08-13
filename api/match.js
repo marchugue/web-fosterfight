@@ -22,11 +22,7 @@ export default async function handler(req, res) {
   }
 
   const httpUrl = dbUrl.replace(/^libsql:\/\//, 'https://').replace(/\/$/, '') + '/v2/pipeline';
-  const { winner_name, winner_combo, win_time_seconds, loser_name, loser_combo } = req.body || {};
-
-  if (!winner_name || !loser_name) {
-    return res.status(400).json({ error: 'Missing required match fields.' });
-  }
+  const { winner_name, winner_combo, win_time_seconds, loser_name, loser_combo, player_name, is_singleplayer, sp_clear_time_seconds } = req.body || {};
 
   const playedAt = new Date().toISOString();
 
@@ -38,6 +34,7 @@ export default async function handler(req, res) {
       matches_played INTEGER DEFAULT 0,
       highest_combo INTEGER DEFAULT 0,
       fastest_win_seconds REAL,
+      sp_fastest_win_seconds REAL,
       last_played_date TEXT
     );
     CREATE TABLE IF NOT EXISTS matches (
@@ -49,6 +46,52 @@ export default async function handler(req, res) {
       played_at TEXT
     );
   `;
+
+  if (is_singleplayer || sp_clear_time_seconds) {
+    const spName = player_name || winner_name || 'Player 1';
+    const spTime = sp_clear_time_seconds || win_time_seconds || 0;
+    const spSql = `
+      INSERT INTO players (player_name, wins, losses, matches_played, highest_combo, fastest_win_seconds, sp_fastest_win_seconds, last_played_date)
+      VALUES ('${spName.replace(/'/g, "''")}', 0, 0, 0, 0, NULL, ${spTime}, '${playedAt}')
+      ON CONFLICT(player_name) DO UPDATE SET
+        sp_fastest_win_seconds = CASE
+          WHEN sp_fastest_win_seconds IS NULL THEN ${spTime}
+          WHEN ${spTime} < sp_fastest_win_seconds THEN ${spTime}
+          ELSE sp_fastest_win_seconds
+        END,
+        last_played_date = '${playedAt}';
+    `;
+
+    try {
+      const response = await fetch(httpUrl, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${authToken}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          requests: [
+            { type: 'execute', stmt: { sql: initTablesSql } },
+            { type: 'execute', stmt: { sql: spSql } },
+            { type: 'close' }
+          ]
+        })
+      });
+
+      if (!response.ok) {
+        const errText = await response.text();
+        return res.status(500).json({ error: errText });
+      }
+
+      return res.status(200).json({ success: true });
+    } catch (err) {
+      return res.status(500).json({ error: err.message });
+    }
+  }
+
+  if (!winner_name || !loser_name) {
+    return res.status(400).json({ error: 'Missing required match fields.' });
+  }
 
   const winnerSql = `
     INSERT INTO players (player_name, wins, losses, matches_played, highest_combo, fastest_win_seconds, last_played_date)

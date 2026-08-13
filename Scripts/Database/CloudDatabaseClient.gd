@@ -44,6 +44,20 @@ func record_match(winner_name: String, winner_combo: int, win_time_seconds: floa
 	if err != OK:
 		match_recorded.emit(false)
 
+func record_sp_clear(player_name: String, sp_clear_time_seconds: float) -> void:
+	var base_url = _get_base_url()
+	var url = "%s/api/match" % base_url
+	var headers = ["Content-Type: application/json"]
+	var payload = {
+		"player_name": player_name,
+		"is_singleplayer": true,
+		"sp_clear_time_seconds": sp_clear_time_seconds
+	}
+	var json_str = JSON.stringify(payload)
+	var err = _http_post.request(url, headers, HTTPClient.METHOD_POST, json_str)
+	if err != OK:
+		match_recorded.emit(false)
+
 func _get_base_url() -> String:
 	if OS.has_feature("web"):
 		return ""

@@ -36,6 +36,13 @@ func record_match_result(winner_name: String, winner_combo: int, win_time_second
 	if _cloud_client != null:
 		_cloud_client.record_match(winner_name, winner_combo, win_time_seconds, loser_name, loser_combo)
 
+func record_singleplayer_clear(player_name: String, clear_time_seconds: float) -> void:
+	var played_at = Time.get_datetime_string_from_system(true) + "Z"
+	_players.upsert_sp_clear(player_name, clear_time_seconds, played_at)
+
+	if _cloud_client != null:
+		_cloud_client.record_sp_clear(player_name, clear_time_seconds)
+
 func request_leaderboard(mode_name: String = "Wins", limit: int = 50, use_online: bool = true) -> void:
 	is_online_mode = use_online
 	if is_online_mode and _cloud_client != null:
@@ -52,6 +59,9 @@ func get_top_players_by_combo(limit: int = 10) -> Array:
 
 func get_top_players_by_fastest_win(limit: int = 10) -> Array:
 	return _players.get_top_players(limit, "FastestWinSeconds")
+
+func get_top_players_by_sp_fastest_win(limit: int = 10) -> Array:
+	return _players.get_top_players(limit, "SPFastestWinSeconds")
 
 func _on_cloud_leaderboard_fetched(records: Array, is_online: bool) -> void:
 	if is_online and not records.is_empty():

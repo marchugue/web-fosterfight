@@ -318,6 +318,16 @@ func quit_game() -> void:
 	if GameManager.instance != null:
 		GameManager.instance.go_to_main_menu()
 
+func show_defeat_screen(wave_reached: int = 1, max_waves: int = 7) -> void:
+	if _pause_panel != null:
+		_pause_panel.visible = true
+		if _resume_button != null:
+			_resume_button.visible = false
+		if _retry_button != null:
+			_retry_button.grab_focus()
+	else:
+		retry_game()
+
 func _setup_audio_sliders() -> void:
 	if _master_slider != null:
 		_master_slider.min_value = 0.0

@@ -23,10 +23,15 @@ export default async function handler(req, res) {
   const limit = parseInt(req.query.limit || '50', 10);
 
   let orderBy = 'wins DESC';
+  let whereClause = '';
   if (mode === 'HighestCombo') {
     orderBy = 'highest_combo DESC';
   } else if (mode === 'FastestWinSeconds') {
     orderBy = 'fastest_win_seconds ASC';
+    whereClause = 'WHERE fastest_win_seconds IS NOT NULL';
+  } else if (mode === 'SPFastestWinSeconds') {
+    orderBy = 'sp_fastest_win_seconds ASC';
+    whereClause = 'WHERE sp_fastest_win_seconds IS NOT NULL';
   }
 
   const initTablesSql = `
@@ -37,11 +42,12 @@ export default async function handler(req, res) {
       matches_played INTEGER DEFAULT 0,
       highest_combo INTEGER DEFAULT 0,
       fastest_win_seconds REAL,
+      sp_fastest_win_seconds REAL,
       last_played_date TEXT
     );
   `;
 
-  const querySql = `SELECT player_name, wins, losses, matches_played, highest_combo, fastest_win_seconds, last_played_date FROM players ORDER BY ${orderBy} LIMIT ${limit};`;
+  const querySql = `SELECT player_name, wins, losses, matches_played, highest_combo, fastest_win_seconds, sp_fastest_win_seconds, last_played_date FROM players ${whereClause} ORDER BY ${orderBy} LIMIT ${limit};`;
 
   try {
     const response = await fetch(httpUrl, {

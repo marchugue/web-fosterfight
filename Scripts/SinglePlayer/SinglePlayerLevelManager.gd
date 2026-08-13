@@ -34,6 +34,7 @@ var _spawn_queue: Array[SinglePlayerEntityData] = []
 var _current_wave_stat_mult: float = 1.0
 var _spawn_check_timer: float = 0.0
 var _is_transitioning_wave: bool = false
+var _level_elapsed_time: float = 0.0
 
 func _ready() -> void:
 	call_deferred("_setup_level")
@@ -41,6 +42,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if _level_cleared or current_wave <= 0:
 		return
+
+	_level_elapsed_time += delta
 
 	_spawn_check_timer += delta
 	if _spawn_check_timer < 0.35:
@@ -505,6 +508,13 @@ func _on_all_waves_cleared() -> void:
 	if AudioManager.instance != null:
 		AudioManager.instance.play_match_win_sfx()
 
+	# Record singleplayer fastest clear record
+	var p_name = "Player 1"
+	if GameManager.instance != null and not GameManager.instance.player_one_name.strip_edges().is_empty():
+		p_name = GameManager.instance.player_one_name
+	if LeaderboardManager.instance != null:
+		LeaderboardManager.instance.record_singleplayer_clear(p_name, _level_elapsed_time)
+
 	var timer = get_tree().create_timer(2.5)
 	timer.timeout.connect(_transition_to_results, CONNECT_ONE_SHOT)
 
@@ -513,9 +523,15 @@ func _on_player_died() -> void:
 		return
 	_level_cleared = true
 
-	var timer = get_tree().create_timer(2.5)
+	if AudioManager.instance != null:
+		AudioManager.instance.play_match_lose_sfx()
+
+	var timer = get_tree().create_timer(1.2)
 	timer.timeout.connect(func():
-		get_tree().reload_current_scene()
+		if _ui != null and _ui.has_method("show_defeat_screen"):
+			_ui.call("show_defeat_screen", current_wave, total_waves)
+		else:
+			get_tree().reload_current_scene()
 	, CONNECT_ONE_SHOT)
 
 func _transition_to_results() -> void:

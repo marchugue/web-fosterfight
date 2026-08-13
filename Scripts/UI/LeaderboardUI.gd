@@ -1,7 +1,7 @@
 class_name LeaderboardUI
 extends Control
 
-enum SortMode { TOP_PLAYER, HIGHEST_COMBO, FASTEST_WIN }
+enum SortMode { TOP_PLAYER, HIGHEST_COMBO, FASTEST_WIN, SP_FASTEST_WIN }
 
 @export var scroll_container_path: NodePath = "%ScrollContainer"
 @export var entries_hbox_path: NodePath = "%EntriesHBox"
@@ -12,6 +12,7 @@ enum SortMode { TOP_PLAYER, HIGHEST_COMBO, FASTEST_WIN }
 @export var wins_tab_button_path: NodePath = "%WinsTabButton"
 @export var combo_tab_button_path: NodePath = "%ComboTabButton"
 @export var fastest_tab_button_path: NodePath = "%FastestTabButton"
+@export var sp_fastest_tab_button_path: NodePath = "%SPFastestTabButton"
 @export var back_button_path: NodePath = "%BackButton"
 @export var scroll_up_button_path: NodePath = "%ScrollUpButton"
 @export var scroll_down_button_path: NodePath = "%ScrollDownButton"
@@ -114,10 +115,27 @@ func _ready() -> void:
 	var wins_tab = get_node_or_null(wins_tab_button_path) as BaseButton
 	var combo_tab = get_node_or_null(combo_tab_button_path) as BaseButton
 	var fastest_tab = get_node_or_null(fastest_tab_button_path) as BaseButton
+	var sp_fastest_tab = get_node_or_null(sp_fastest_tab_button_path) as BaseButton
 
 	if wins_tab != null: wins_tab.pressed.connect(func(): set_sort_mode(SortMode.TOP_PLAYER))
 	if combo_tab != null: combo_tab.pressed.connect(func(): set_sort_mode(SortMode.HIGHEST_COMBO))
 	if fastest_tab != null: fastest_tab.pressed.connect(func(): set_sort_mode(SortMode.FASTEST_WIN))
+
+	var tabs_container = get_node_or_null("Tabs") as HBoxContainer
+	if tabs_container != null:
+		if sp_fastest_tab == null:
+			var sp_btn = Button.new()
+			sp_btn.name = "SPFastestTabButton"
+			sp_btn.text = "SP FASTEST"
+			sp_btn.custom_minimum_size = Vector2(170, 42)
+			sp_btn.add_theme_font_size_override("font_size", 12)
+			if entry_font != null:
+				sp_btn.add_theme_font_override("font", entry_font)
+			tabs_container.add_child(sp_btn)
+			sp_fastest_tab = sp_btn
+
+	if sp_fastest_tab != null:
+		sp_fastest_tab.pressed.connect(func(): set_sort_mode(SortMode.SP_FASTEST_WIN))
 
 	_scroll_up_button = get_node_or_null(scroll_up_button_path) as BaseButton
 	_scroll_down_button = get_node_or_null(scroll_down_button_path) as BaseButton
@@ -222,6 +240,7 @@ func refresh() -> void:
 			SortMode.TOP_PLAYER: _col3_header.text = "WINS"
 			SortMode.HIGHEST_COMBO: _col3_header.text = "HIGHEST COMBO"
 			SortMode.FASTEST_WIN: _col3_header.text = "FASTEST WIN"
+			SortMode.SP_FASTEST_WIN: _col3_header.text = "SP FASTEST"
 			_: _col3_header.text = "STAT"
 
 	var mode_str = "Wins"
@@ -229,6 +248,7 @@ func refresh() -> void:
 		SortMode.TOP_PLAYER: mode_str = "Wins"
 		SortMode.HIGHEST_COMBO: mode_str = "HighestCombo"
 		SortMode.FASTEST_WIN: mode_str = "FastestWinSeconds"
+		SortMode.SP_FASTEST_WIN: mode_str = "SPFastestWinSeconds"
 
 	if LeaderboardManager.instance != null:
 		LeaderboardManager.instance.request_leaderboard(mode_str, max_entries, _use_online)
@@ -278,6 +298,9 @@ func _on_leaderboard_data_ready(records: Array, is_online: bool) -> void:
 			SortMode.FASTEST_WIN:
 				var fast_sec = record.get("fastest_win_seconds", record.get("FastestWinSeconds", null))
 				stat_text = _format_seconds(fast_sec)
+			SortMode.SP_FASTEST_WIN:
+				var sp_fast_sec = record.get("sp_fastest_win_seconds", record.get("SPFastestWinSeconds", null))
+				stat_text = _format_seconds(sp_fast_sec)
 
 		var stat_lbl = _create_label(stat_text, stat_color, stat_alignment)
 		_wins_container.add_child(stat_lbl)

@@ -20,6 +20,7 @@ var _hurt_vignette: HurtVignette = null
 var _last_player_hp: float = -1.0
 
 var _pause_panel: Control = null
+var _defeat_panel: Control = null
 var _master_slider: HSlider = null
 var _music_slider: HSlider = null
 var _sfx_slider: HSlider = null
@@ -40,8 +41,11 @@ func _ready() -> void:
 	_update_layout()
 	_build_cooldown_ui()
 	_build_pause_ui()
+	_build_defeat_ui()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if _defeat_panel != null and _defeat_panel.visible:
+		return
 	if event.is_action_pressed("pause") and not event.is_echo():
 		toggle_pause()
 		get_viewport().set_input_as_handled()
@@ -51,6 +55,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 
 func toggle_pause() -> void:
+	if _defeat_panel != null and _defeat_panel.visible:
+		return
 	if get_tree().paused:
 		resume_game()
 	else:
@@ -77,6 +83,110 @@ func quit_game() -> void:
 		GameManager.instance.go_to_main_menu()
 	else:
 		get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+
+func show_defeat_screen(wave_reached: int = 1, max_waves: int = 7) -> void:
+	if _defeat_panel == null:
+		return
+	var wave_info_lbl = _defeat_panel.get_node_or_null("%DefeatWaveLabel") as Label
+	if wave_info_lbl != null:
+		var normal_total = maxi(1, max_waves - 1)
+		if wave_reached >= max_waves:
+			wave_info_lbl.text = "REACHED FINAL BOSS WAVE!"
+		else:
+			wave_info_lbl.text = "REACHED WAVE %d OF %d" % [wave_reached, normal_total]
+
+	_defeat_panel.visible = true
+	var retry_btn = _defeat_panel.get_node_or_null("%DefeatRetryButton") as Button
+	if retry_btn != null:
+		retry_btn.grab_focus()
+
+func _build_defeat_ui() -> void:
+	_defeat_panel = Control.new()
+	_defeat_panel.name = "DefeatPanel"
+	_defeat_panel.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_defeat_panel.visible = false
+	_defeat_panel.z_index = 120
+	_defeat_panel.process_mode = Node.PROCESS_MODE_ALWAYS
+	add_child(_defeat_panel)
+
+	var dim = ColorRect.new()
+	dim.color = Color(0.12, 0.02, 0.02, 0.85)
+	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	dim.mouse_filter = Control.MOUSE_FILTER_STOP
+	_defeat_panel.add_child(dim)
+
+	var card = PanelContainer.new()
+	card.name = "DefeatCard"
+	card.custom_minimum_size = Vector2(400, 320)
+	card.anchors_preset = Control.PRESET_CENTER
+	card.position = Vector2((size.x - 400) * 0.5, (size.y - 320) * 0.5)
+
+	var card_sb = StyleBoxFlat.new()
+	card_sb.bg_color = Color(0.12, 0.05, 0.05, 0.95)
+	card_sb.border_width_left = 3
+	card_sb.border_width_top = 3
+	card_sb.border_width_right = 3
+	card_sb.border_width_bottom = 3
+	card_sb.border_color = Color(0.9, 0.2, 0.2, 0.9)
+	card_sb.corner_radius_top_left = 14
+	card_sb.corner_radius_top_right = 14
+	card_sb.corner_radius_bottom_left = 14
+	card_sb.corner_radius_bottom_right = 14
+	card_sb.shadow_color = Color(0.8, 0.1, 0.1, 0.3)
+	card_sb.shadow_size = 15
+	card.add_theme_stylebox_override("panel", card_sb)
+	_defeat_panel.add_child(card)
+
+	var margin = MarginContainer.new()
+	margin.add_theme_constant_override("margin_left", 24)
+	margin.add_theme_constant_override("margin_top", 24)
+	margin.add_theme_constant_override("margin_right", 24)
+	margin.add_theme_constant_override("margin_bottom", 24)
+	card.add_child(margin)
+
+	var vbox = VBoxContainer.new()
+	vbox.add_theme_constant_override("separation", 16)
+	margin.add_child(vbox)
+
+	var title = Label.new()
+	title.text = "YOU DIED"
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.add_theme_font_size_override("font_size", 34)
+	title.add_theme_color_override("font_color", Color(1.0, 0.25, 0.25))
+	title.add_theme_color_override("font_outline_color", Color(0, 0, 0, 1.0))
+	title.add_theme_constant_override("outline_size", 8)
+	vbox.add_child(title)
+
+	var sub_label = Label.new()
+	sub_label.name = "DefeatWaveLabel"
+	sub_label.unique_name_in_owner = true
+	sub_label.text = "REACHED WAVE 1 OF 6"
+	sub_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	sub_label.add_theme_font_size_override("font_size", 14)
+	sub_label.add_theme_color_override("font_color", Color(0.9, 0.8, 0.8))
+	vbox.add_child(sub_label)
+
+	var spacer = Control.new()
+	spacer.custom_minimum_size = Vector2(0, 10)
+	vbox.add_child(spacer)
+
+	var retry_btn = Button.new()
+	retry_btn.name = "DefeatRetryButton"
+	retry_btn.unique_name_in_owner = true
+	retry_btn.text = "RETRY 🔄"
+	retry_btn.custom_minimum_size = Vector2(240, 44)
+	retry_btn.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	retry_btn.add_theme_font_size_override("font_size", 16)
+	retry_btn.pressed.connect(retry_game)
+	vbox.add_child(retry_btn)
+
+	var quit_btn = Button.new()
+	quit_btn.text = "QUIT TO MENU 🏠"
+	quit_btn.custom_minimum_size = Vector2(240, 44)
+	quit_btn.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	quit_btn.add_theme_font_size_override("font_size", 16)
+	quit_btn.pressed.connect(quit_game)
+	vbox.add_child(quit_btn)
 
 func _build_pause_ui() -> void:
 	var pause_btn = Button.new()
